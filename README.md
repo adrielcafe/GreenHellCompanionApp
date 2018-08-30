@@ -1,6 +1,6 @@
 # Green Hell Companion App
 
-![green hell banner](https://steamcdn-a.akamaihd.net/steam/apps/815370/header.jpg?t=1535538259)
+![app banner](banner.png)
 
 This Android app is an unofficial companion app for the [Green Hell](http://www.greenhell-game.com/) PC game.
 
