@@ -9,8 +9,6 @@ import com.mikepenz.fastadapter_extensions.drag.IDraggable
 import com.shawnlin.numberpicker.NumberPicker
 import kotlinx.android.synthetic.main.list_item_location.view.*
 
-
-
 class LocationAdapterItem(val location: Location) :
     AbstractItem<LocationAdapterItem, LocationAdapterItem.ViewHolder>(),
     IDraggable<LocationAdapterItem, LocationAdapterItem> {

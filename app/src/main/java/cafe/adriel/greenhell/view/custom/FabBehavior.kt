@@ -11,10 +11,12 @@ import com.google.android.material.snackbar.Snackbar
 
 class FabBehavior(context: Context, attrs: AttributeSet) : CoordinatorLayout.Behavior<FloatingActionButton>(context, attrs) {
 
+    private val margin = 20.px
+
     override fun layoutDependsOn(parent: CoordinatorLayout, child: FloatingActionButton, dependency: View): Boolean {
         if(dependency is BottomNavigationView){
             (child.layoutParams as CoordinatorLayout.LayoutParams)
-                .setMargins(0, 0, 20.px, dependency.measuredHeight + 20.px)
+                .setMargins(0, 0, margin, dependency.measuredHeight + margin)
         }
         return dependency is Snackbar.SnackbarLayout
     }

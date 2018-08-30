@@ -152,11 +152,9 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
     }
 
     private fun updateState(){
-        vState.viewState = if(adapter.adapterItems.isEmpty()){
-            MultiStateView.VIEW_STATE_EMPTY
-        } else {
-            MultiStateView.VIEW_STATE_CONTENT
-        }
+        vState.viewState =
+                if(adapter.adapterItems.isEmpty()) MultiStateView.VIEW_STATE_EMPTY
+                else MultiStateView.VIEW_STATE_CONTENT
     }
 
     private fun closeSwipeMenu(position: Int){

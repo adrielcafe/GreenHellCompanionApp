@@ -46,8 +46,8 @@ class LocationEditorDialog : BottomSheetDialogFragment() {
         with(view){
             location?.let {
                 vName.setText(it.name)
-                vWestPosition.setSelectedLocation(it.westPosition)
-                vSouthPosition.setSelectedLocation(it.southPosition)
+                vWestPosition.setSelectedPosition(it.westPosition)
+                vSouthPosition.setSelectedPosition(it.southPosition)
             }
             vName.addTextChangedListener(object : TextWatcher{
                 override fun afterTextChanged(s: Editable?) {
@@ -68,10 +68,10 @@ class LocationEditorDialog : BottomSheetDialogFragment() {
         val westPosition = vWestPosition.getSelectedPosition()
         val southPosition = vSouthPosition.getSelectedPosition()
         val newLocation = location?.apply {
-            this.name = name
-            this.westPosition = westPosition
-            this.southPosition = southPosition
-        } ?: Location(name, westPosition, southPosition)
+                this.name = name
+                this.westPosition = westPosition
+                this.southPosition = southPosition
+            } ?: Location(name, westPosition, southPosition)
 
         EventBus.getDefault().post(SaveLocationEvent(newLocation))
         dismiss()

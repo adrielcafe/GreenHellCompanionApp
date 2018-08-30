@@ -18,22 +18,18 @@ import org.greenrobot.eventbus.EventBus
 class MainActivity : AppCompatActivity(),
     BottomNavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
 
-    private lateinit var adapter: SectionsPagerAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(vToolbar)
+    }
 
-        adapter = SectionsPagerAdapter(supportFragmentManager)
-        vContent.adapter = adapter
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+        vContent.adapter = SectionsPagerAdapter(supportFragmentManager)
         vContent.addOnPageChangeListener(this)
         vBottomNav.setOnNavigationItemSelectedListener(this)
-        vAdd.setOnClickListener {
-            when(vContent.currentItem){
-                0 -> EventBus.getDefault().post(AddLocationEvent())
-            }
-        }
+        vAdd.setOnClickListener { onAddClicked() }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -67,9 +63,17 @@ class MainActivity : AppCompatActivity(),
 
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) { }
 
+    private fun onAddClicked(){
+        when(vContent.currentItem){
+            0 -> EventBus.getDefault().post(AddLocationEvent())
+        }
+    }
+
     inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         private val sections by lazy {
-            listOf(LocationsFragment.newInstance(), RecipesFragment.newInstance(), MapFragment.newInstance())
+            listOf(LocationsFragment.newInstance(),
+                RecipesFragment.newInstance(),
+                MapFragment.newInstance())
         }
 
         override fun getItem(position: Int) = sections[position]

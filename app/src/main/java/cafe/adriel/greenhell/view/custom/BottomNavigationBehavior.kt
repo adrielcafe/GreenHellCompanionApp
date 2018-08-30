@@ -19,12 +19,12 @@ class BottomNavigationBehavior(context: Context, attrs: AttributeSet) : Coordina
 
     private fun updateSnackBar(child: View, snackbarLayout: Snackbar.SnackbarLayout) {
         if (snackbarLayout.layoutParams is CoordinatorLayout.LayoutParams) {
-            val params = snackbarLayout.layoutParams as CoordinatorLayout.LayoutParams
-
-            params.anchorId = child.id
-            params.anchorGravity = Gravity.TOP
-            params.gravity = Gravity.TOP
-            snackbarLayout.layoutParams = params
+            with(snackbarLayout.layoutParams as CoordinatorLayout.LayoutParams) {
+                anchorId = child.id
+                anchorGravity = Gravity.TOP
+                gravity = Gravity.TOP
+                snackbarLayout.layoutParams = this
+            }
         }
     }
 

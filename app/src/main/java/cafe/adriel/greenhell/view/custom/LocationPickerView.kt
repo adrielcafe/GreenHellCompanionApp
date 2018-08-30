@@ -33,13 +33,14 @@ class LocationPickerView(context: Context, attrs: AttributeSet) : RelativeLayout
             when(direction){
                 LOCATION_WEST -> vLocationDirection.text = "'W"
                 LOCATION_SOUTH -> vLocationDirection.text = "'S"
+                else -> vLocationDirection.text = ""
             }
         }
     }
 
     fun getSelectedPosition() = vLocationPosition.value
 
-    fun setSelectedLocation(position: Int) {
+    fun setSelectedPosition(position: Int) {
         vLocationPosition.value = position
     }
 
