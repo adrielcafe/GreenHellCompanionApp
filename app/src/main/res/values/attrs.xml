@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LocationPickerView">
+        <attr name="lpvDirection" format="enum">
+            <enum name="west" value="0"/>
+            <enum name="south" value="1"/>
+        </attr>
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_title" translatable="false">Green Hell</string>
+    <string name="app_subtitle">Unofficial Companion</string>
+
+    <string name="location_name">Location name</string>
+    <string name="locations">Locations</string>
+    <string name="recipes">Recipes</string>
+    <string name="map">Map</string>
+    <string name="save">Save</string>
+    <string name="location_deleted">Location deleted</string>
+    <string name="undo">Undo</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="lets_give_name_location">༼ つ ◕_◕ ༽つ Give a name for your location</string>
+    <string name="name_too_long">¯\\_(ツ)_/¯ This name is tooooo long</string>
+    <string name="no_location_found">No location found</string>
+    <string name="coming_soon">Coming soon</string>
+
+</resources>

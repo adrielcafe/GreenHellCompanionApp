@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context="cafe.adriel.greenhell.view.custom.LocationPickerView">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="17dp"
+        app:srcCompat="@drawable/ic_arrow_up"
+        app:tint="@color/grey600"/>
+
+    <com.shawnlin.numberpicker.NumberPicker
+        android:id="@+id/vLocationPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        app:np_min="0"
+        app:np_max="99"
+        app:np_wheelItemCount="1"
+        app:np_textColor="@android:color/black"
+        app:np_textSize="30sp"
+        app:np_selectedTextColor="@android:color/black"
+        app:np_selectedTextSize="30sp"
+        app:np_dividerColor="@android:color/transparent"
+        app:np_formatter="%02d"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/vLocationPosition"
+        android:layout_marginTop="-35dp"
+        android:layout_marginStart="17dp"
+        app:srcCompat="@drawable/ic_arrow_down"
+        app:tint="@color/grey600"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/vLocationDirection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/vLocationPosition"
+        android:layout_marginStart="-20dp"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        app:fontFamily="@font/digital_7"
+        tools:text="'W"/>
+
+</RelativeLayout>
