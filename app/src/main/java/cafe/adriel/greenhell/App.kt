@@ -22,6 +22,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         startKoin(this, listOf(repositoriesModule, viewModelsModule))
+        Analytics.init(this)
         Paper.init(this)
         initLogging()
     }

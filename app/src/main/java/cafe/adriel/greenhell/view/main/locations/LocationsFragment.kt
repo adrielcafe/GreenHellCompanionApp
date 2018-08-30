@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cafe.adriel.greenhell.AddLocationEvent
+import cafe.adriel.greenhell.Analytics
 import cafe.adriel.greenhell.R
 import cafe.adriel.greenhell.SaveLocationEvent
 import cafe.adriel.greenhell.model.Location
@@ -173,5 +174,6 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
     @Subscribe
     fun onEvent(event: SaveLocationEvent){
         saveLocation(event.location)
+        Analytics.logSaveLocation(event.location)
     }
 }
