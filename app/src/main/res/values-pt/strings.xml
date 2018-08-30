@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="location_name">Nome do local</string>
+    <string name="locations">Locais</string>
+    <string name="recipes">Receitas</string>
+    <string name="map">Mapa</string>
+    <string name="save">Salvar</string>
+    <string name="location_deleted">Local excluído</string>
+    <string name="undo">Desfazer</string>
+    <string name="lets_give_name_location">༼ つ ◕_◕ ༽つ Dê um nome para seu local</string>
+    <string name="name_too_long">¯\\_(ツ)_/¯ Esse nome é muuuuuito grande</string>
+    <string name="no_location_found">Nenhum local encontrado</string>
+    <string name="coming_soon">Em breve</string>
+
+</resources>
