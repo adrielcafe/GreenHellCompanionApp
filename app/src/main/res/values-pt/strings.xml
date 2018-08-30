@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_subtitle">Companheiro Não-oficial</string>
 
+    <string name="unofficial_companion">Companheiro Não-oficial</string>
     <string name="location_name">Nome do local</string>
     <string name="locations">Locais</string>
     <string name="recipes">Receitas</string>

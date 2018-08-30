@@ -21,8 +21,8 @@
             android:id="@+id/vToolbar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            app:title="@string/app_title"
-            app:subtitle="@string/app_subtitle"
+            app:title="@string/app_name"
+            app:subtitle="@string/unofficial_companion"
             app:titleTextAppearance="@style/ToolbarTitle"
             app:popupTheme="@style/AppTheme.PopupOverlay"/>
 

@@ -14,17 +14,21 @@ android {
         targetSdkVersion 28
         versionCode 3
         versionName "1.0.2"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        resConfigs "en", "pt"
     }
     buildTypes {
         debug {
+            applicationIdSuffix '.dev'
+            versionNameSuffix '-dev'
             useProguard false
             buildConfigField "Boolean", "RELEASE", "false"
+            resValue "string", "app_name", "Green Hell Dev"
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "Boolean", "RELEASE", "true"
+            resValue "string", "app_name", "Green Hell"
         }
     }
     compileOptions {
