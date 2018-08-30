@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_title" translatable="false">Green Hell</string>
-    <string name="app_subtitle" translatable="false">Unofficial Companion</string>
+    <string name="app_subtitle">Unofficial Companion</string>
 
     <string name="location_name">Location name</string>
     <string name="locations">Locations</string>
