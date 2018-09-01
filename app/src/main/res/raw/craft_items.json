@@ -1,0 +1,292 @@
+[
+  {
+    "name": "Blade Axe",
+    "description": "1x Stick\n3x Stone Blade",
+    "category": "WEAPON"
+  },
+  {
+    "name": "Bone Axe",
+    "description": "1x Stick\n2x Bone\n1x Rope",
+    "category": "WEAPON"
+  },
+  {
+    "name": "Obsidian Axe",
+    "description": "1x Obsidian\n1x Stick\n1x Rope",
+    "category": "WEAPON"
+  },
+  {
+    "name": "Stone Axe",
+    "description": "1x Stick\n1x Stone",
+    "category": "WEAPON"
+  },
+  {
+    "name": "Axe",
+    "description": "1x Stick\n1x Stone blade\n1x Rope",
+    "category": "WEAPON"
+  },
+  {
+    "name": "Bone Knife",
+    "description": "1x Bone\n1x Rope",
+    "category": "WEAPON"
+  },
+  {
+    "name": "Obsidian Blade",
+    "description": "1x Obsidian\n1x Stone\n1x Rope",
+    "category": "WEAPON"
+  },
+  {
+    "name": "Stick Blade",
+    "description": "2x Small Stick\n1x Stone\n1x Rope",
+    "category": "WEAPON"
+  },
+  {
+    "name": "Stone Blade",
+    "description": "2x Stone",
+    "category": "WEAPON"
+  },
+  {
+    "name": "Bone Spear",
+    "description": "1x Long Stick\n1x Bone\n1x Rope",
+    "category": "WEAPON"
+  },
+  {
+    "name": "Four Pronged Spear",
+    "description": "1x Long Stick or Long Bamboo Stick\n2x Small Stick\n1x Rope",
+    "category": "WEAPON"
+  },
+  {
+    "name": "Obsidian Spear",
+    "description": "1x Obsidian\n1x Long Stick\n1x Rope",
+    "category": "WEAPON"
+  },
+  {
+    "name": "Stone Spear",
+    "description": "1x Long Stick\n1x Stone blade\n1x Rope",
+    "category": "WEAPON"
+  },
+  {
+    "name": "Weak Spear",
+    "description": "1x Long Stick",
+    "category": "WEAPON"
+  },
+  {
+    "name": "Arrow",
+    "description": "2x Bird Feather\n1x Small Stick",
+    "category": "WEAPON"
+  },
+  {
+    "name": "Bow",
+    "description": "1x Long Stick or Long Bamboo Stick\n1x Rope",
+    "category": "WEAPON"
+  },
+  {
+    "name": "Fire Bow",
+    "description": "1x Bow\n1x Stone\n1x Small Stick\n1x Plank",
+    "category": "WEAPON"
+  },
+  {
+    "name": "Coconut Bidon",
+    "description": "1x Coconut\n1x Rope",
+    "category": "TOOL"
+  },
+  {
+    "name": "Hand Drill",
+    "description": "1x Stick\n1x Small Stick",
+    "category": "TOOL"
+  },
+  {
+    "name": "Torch (Extended Burn Time)",
+    "description": "1x Stick\n1x Rope\n1x Wood Resin",
+    "category": "TOOL"
+  },
+  {
+    "name": "Tribal Fire Starter",
+    "description": "2x Stick\n2x Rope",
+    "category": "TOOL"
+  },
+  {
+    "name": "Torch",
+    "description": "1x Stick\n1x Rope",
+    "category": "TOOL"
+  },
+  {
+    "name": "Bandage",
+    "description": "1x Molineria Leaf",
+    "category": "MEDICINE"
+  },
+  {
+    "name": "Ash Dressing",
+    "description": "1x Leaf Bandage\n1x Ash",
+    "category": "MEDICINE"
+  },
+  {
+    "name": "Antivenom Bandage",
+    "description": "1x Leaf Bandage\n1x Tobbaco Leaf",
+    "category": "MEDICINE"
+  },
+  {
+    "name": "Antivenom Infusion",
+    "description": "1x Bowl of Water\n1x Tobacco Leaf",
+    "category": "FOOD"
+  },
+  {
+    "name": "Fever Infusion",
+    "description": "1x Bowl of Water\n1x Amara Flower",
+    "category": "FOOD"
+  },
+  {
+    "name": "Antiparasitic Infusion",
+    "description": "1x Bowl of Water\n1x Cup-shaped Mushroom",
+    "category": "FOOD"
+  },
+  {
+    "name": "Meat Stew",
+    "description": "1x Bowl of Water\n1x Fresh Meat",
+    "category": "FOOD"
+  },
+  {
+    "name": "Small Fire",
+    "description": "6x Small Stick\n8x Stick",
+    "category": "CAMPSITE"
+  },
+  {
+    "name": "Stone Ring",
+    "description": "10x Big Stone",
+    "category": "CAMPSITE"
+  },
+  {
+    "name": "Grill Rack",
+    "description": "6x Long Stick\n2x Rope",
+    "category": "CAMPSITE"
+  },
+  {
+    "name": "Smoker",
+    "description": "4x Long Stick\n6x Small Stick\n4x Banana Leaf\n3x Rope",
+    "category": "CAMPSITE"
+  },
+  {
+    "name": "Bamboo Smoker",
+    "description": "4x Long Bamboo Stick\n14x Bamboo Stick\n5x Banana Leaf\n6x Rope",
+    "category": "CAMPSITE"
+  },
+  {
+    "name": "Dryer",
+    "description": "7x Long Stick\n11x Small Stick\n11x Rope\n3x Bone Needle",
+    "category": "CAMPSITE"
+  },
+  {
+    "name": "Bamboo Dryer",
+    "description": "3x Long Bamboo Stick\n14x Bamboo Stick\n7x Rope",
+    "category": "CAMPSITE"
+  },
+  {
+    "name": "Campfire",
+    "description": "8x Small Stick\n12x Stick\n12x Stone",
+    "category": "CAMPSITE"
+  },
+  {
+    "name": "Water Collector",
+    "description": "4x Long Stick\n4x Stick\n4x Rope\n11x Banana Leaf",
+    "category": "CAMPSITE"
+  },
+  {
+    "name": "Water Filter",
+    "description": "2x Long Stick\n1x Bamboo Log\n2x Rope\n3x Charcoal\n2x Stone",
+    "category": "CAMPSITE"
+  },
+  {
+    "name": "Bamboo Water Collector",
+    "description": "4x Long Bamboo Stick\n4x Bamboo Stick\n4x Rope\n11x Banana Leaf",
+    "category": "CAMPSITE"
+  },
+  {
+    "name": "Bamboo Water Filter",
+    "description": "2x Long Bamboo Stick\n1x Bamboo Log\n2x Rope\n3x Charcoal\n2x Stone",
+    "category": "CAMPSITE"
+  },
+  {
+    "name": "Weapon Rack",
+    "description": "7x Long Stick\n4x Rope",
+    "category": "CAMPSITE"
+  },
+  {
+    "name": "Stone Trap",
+    "description": "3x Small Stick\n1x Big Stone\n1x Rope",
+    "category": "TRAP"
+  },
+  {
+    "name": "Cage Trap",
+    "description": "16x Stick\n6x Small Stick\n4x Rope",
+    "category": "TRAP"
+  },
+  {
+    "name": "Killer Trap",
+    "description": "4x Log\n4x Long Stick\n1x Stick\n4x Small Stick\n7x Rope",
+    "category": "TRAP"
+  },
+  {
+    "name": "Snare Trap",
+    "description": "2x Log\n1x Long Stick\n2x Stick\n8x Small Stick\n8x Rope",
+    "category": "TRAP"
+  },
+  {
+    "name": "Fishing Rod Trap",
+    "description": "2x Log\n1x Long Stick\n2x Small Stick\n2x Rope\n1x Fishing Rod",
+    "category": "TRAP"
+  },
+  {
+    "name": "Stick Fish Trap",
+    "description": "27x Stick",
+    "category": "TRAP"
+  },
+  {
+    "name": "Large Stick Fish Trap",
+    "description": "50x Stick",
+    "category": "TRAP"
+  },
+  {
+    "name": "Frog Stretcher",
+    "description": "4x Small Stick\n1x Rope",
+    "category": "TRAP"
+  },
+  {
+    "name": "Small Shelter",
+    "description": "2x Log\n6x Long Stick\n9x Rope\n26x Palm Leaf",
+    "category": "SHELTER"
+  },
+  {
+    "name": "Medium Shelter",
+    "description": "6x Log\n10x Long Stick\n11x Rope\n48x Palm Leaf",
+    "category": "SHELTER"
+  },
+  {
+    "name": "Leaf Bed",
+    "description": "10x Palm Leaf",
+    "category": "SHELTER"
+  },
+  {
+    "name": "Log Bed",
+    "description": "4x Log\n6x Long Stick\n8x Stick\n8x Palm Leaf",
+    "category": "SHELTER"
+  },
+  {
+    "name": "Bamboo Log Bed",
+    "description": "4x Bamboo Log\n8x Bamboo Stick\n6x Long Bamboo Stick\n8x Palm Leaf",
+    "category": "SHELTER"
+  },
+  {
+    "name": "Hut Shelter",
+    "description": "8x Stick\n3x Long Stick\n1x Rope\n13x Palm Leaf",
+    "category": "SHELTER"
+  },
+  {
+    "name": "Small Bamboo Shelter",
+    "description": "2x Bamboo Log\n8x Bamboo Long Stick\n9x Rope\n26x Palm Leaf",
+    "category": "SHELTER"
+  },
+  {
+    "name": "Shelter with Bed",
+    "description": "12x Long Stick\n10x Stick\n13x Rope\n45x Palm Leaf",
+    "category": "SHELTER"
+  }
+]

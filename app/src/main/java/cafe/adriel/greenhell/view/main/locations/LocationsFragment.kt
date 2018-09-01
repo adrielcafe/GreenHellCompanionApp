@@ -9,10 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import cafe.adriel.greenhell.AddLocationEvent
-import cafe.adriel.greenhell.Analytics
-import cafe.adriel.greenhell.R
-import cafe.adriel.greenhell.SaveLocationEvent
+import cafe.adriel.greenhell.*
 import cafe.adriel.greenhell.model.Location
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -24,7 +21,7 @@ import com.mikepenz.fastadapter_extensions.drag.ItemTouchCallback
 import com.mikepenz.fastadapter_extensions.drag.SimpleDragCallback
 import kotlinx.android.synthetic.main.fragment_locations.*
 import kotlinx.android.synthetic.main.fragment_locations.view.*
-import kotlinx.android.synthetic.main.list_item_location.view.*
+import kotlinx.android.synthetic.main.item_location.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -50,7 +47,7 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
             adapter.setHasStableIds(true)
             adapter.withEventHook(object : ClickEventHook<LocationAdapterItem>() {
                 override fun onBindMany(viewHolder: RecyclerView.ViewHolder) =
-                    viewHolder.itemView.run { listOf(vEdit, vDelete) }
+                    viewHolder.itemView.run { listOf(vShare, vEdit, vDelete) }
 
                 override fun onClick(view: View?, position: Int, fastAdapter: FastAdapter<LocationAdapterItem>?, item: LocationAdapterItem?) {
                     if (view != null && item != null) {
@@ -101,6 +98,7 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
     private fun onListItemClicked(view: View, item: LocationAdapterItem, position: Int){
         closeSwipeMenu(position)
         when(view.id){
+            R.id.vShare -> shareLocation(item.location)
             R.id.vEdit -> showLocationEditorDialog(item.location)
             R.id.vDelete -> deleteLocation(item.location)
         }
@@ -149,6 +147,13 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
                     }
                 })
                 .show()
+        }
+    }
+
+    private fun shareLocation(location: Location){
+        activity?.run {
+            "${location.westPosition}'W ${location.southPosition}'S: ${location.name}".share(this)
+            Analytics.logShareLocation(location)
         }
     }
 

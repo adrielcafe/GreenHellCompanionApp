@@ -1,6 +1,14 @@
 package cafe.adriel.greenhell
 
+import android.app.Activity
+import android.content.Context
 import android.content.res.Resources
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import androidx.annotation.RawRes
+import androidx.core.app.ShareCompat
+import okio.BufferedSource
+import okio.Okio
+import java.io.InputStream
 
 inline fun <reified T : Any> getClassTag(): String = T::class.java.simpleName
 
@@ -9,3 +17,14 @@ val Int.dp: Int
 
 val Int.px: Int
     get() = (this * Resources.getSystem().displayMetrics.density).toInt()
+
+fun String.share(activity: Activity) =
+    ShareCompat.IntentBuilder
+        .from(activity)
+        .setType("text/plain")
+        .setText(this)
+        .startChooser()
+
+fun Context.raw(@RawRes resId: Int): InputStream = resources.openRawResource(resId)
+
+fun InputStream.buffer(): BufferedSource = Okio.buffer(Okio.source(this))

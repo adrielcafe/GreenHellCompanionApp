@@ -8,9 +8,9 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import cafe.adriel.greenhell.AddLocationEvent
 import cafe.adriel.greenhell.R
+import cafe.adriel.greenhell.view.main.crafting.CraftingFragment
 import cafe.adriel.greenhell.view.main.locations.LocationsFragment
 import cafe.adriel.greenhell.view.main.map.MapFragment
-import cafe.adriel.greenhell.view.main.recipes.RecipesFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.EventBus
@@ -26,10 +26,17 @@ class MainActivity : AppCompatActivity(),
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
-        vContent.adapter = SectionsPagerAdapter(supportFragmentManager)
+        val adapter = SectionsPagerAdapter(supportFragmentManager)
+        vContent.adapter = adapter
+        vContent.offscreenPageLimit = adapter.count
         vContent.addOnPageChangeListener(this)
         vBottomNav.setOnNavigationItemSelectedListener(this)
         vAdd.setOnClickListener { onAddClicked() }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        onPageSelected(vContent.currentItem)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -39,7 +46,7 @@ class MainActivity : AppCompatActivity(),
                 vAdd.show()
                 0
             }
-            R.id.nav_recipes -> 1
+            R.id.nav_crafting -> 1
             R.id.nav_map -> 2
             else -> -1
         }
@@ -53,7 +60,7 @@ class MainActivity : AppCompatActivity(),
                 vAdd.show()
                 R.id.nav_locations
             }
-            1 -> R.id.nav_recipes
+            1 -> R.id.nav_crafting
             2 -> R.id.nav_map
             else -> -1
         }
@@ -72,7 +79,7 @@ class MainActivity : AppCompatActivity(),
     inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         private val sections by lazy {
             listOf(LocationsFragment.newInstance(),
-                RecipesFragment.newInstance(),
+                CraftingFragment.newInstance(),
                 MapFragment.newInstance())
         }
 

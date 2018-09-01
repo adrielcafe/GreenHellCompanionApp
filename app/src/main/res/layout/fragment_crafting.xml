@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/colorPrimaryDark"
+    tools:context=".view.main.crafting.CraftingFragment">
+
+    <cafe.adriel.greenhell.view.custom.CraftCategoryPickerView
+        android:id="@+id/vCraftCategories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <com.kennyc.view.MultiStateView
+        android:id="@+id/vState"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/vCraftCategories"
+        app:msv_loadingView="@layout/state_loading"
+        app:msv_emptyView="@layout/state_empty_crafting"
+        app:msv_viewState="loading"
+        app:msv_animateViewChanges="true"
+        tools:msv_viewState="content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/vCraftItems"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:clipToPadding="false"
+            tools:listitem="@layout/item_craft_item"/>
+
+    </com.kennyc.view.MultiStateView>
+
+</RelativeLayout>

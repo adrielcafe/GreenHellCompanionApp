@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    app:cardElevation="1dp"
+    app:cardCornerRadius="3dp"
+    app:cardUseCompatPadding="true"
+    app:contentPaddingTop="10dp"
+    app:contentPaddingBottom="10dp"
+    app:contentPaddingLeft="15dp"
+    app:contentPaddingRight="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/vName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@id/vShare"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:fontFamily="sans-serif-smallcaps"
+            tools:text="Obsidian Axe"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/vDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_below="@id/vName"
+            android:layout_toStartOf="@id/vShare"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            app:fontFamily="sans-serif-smallcaps"
+            tools:text="1x Obsidian\n1x Wood Stick\n1x Rope"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/vShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?actionBarItemBackground"
+            android:src="@drawable/ic_share"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

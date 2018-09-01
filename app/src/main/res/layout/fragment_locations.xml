@@ -6,8 +6,9 @@
     android:id="@+id/vState"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:msv_loadingView="@layout/state_loading"
     app:msv_emptyView="@layout/state_empty_location"
-    app:msv_viewState="empty"
+    app:msv_viewState="loading"
     app:msv_animateViewChanges="true"
     tools:context=".view.main.locations.LocationsFragment"
     tools:msv_viewState="content">
@@ -18,6 +19,6 @@
         android:layout_height="match_parent"
         android:padding="5dp"
         android:clipToPadding="false"
-        tools:listitem="@layout/list_item_location"/>
+        tools:listitem="@layout/item_location"/>
 
 </com.kennyc.view.MultiStateView>

@@ -7,7 +7,7 @@ import cafe.adriel.greenhell.model.Location
 import com.mikepenz.fastadapter.items.AbstractItem
 import com.mikepenz.fastadapter_extensions.drag.IDraggable
 import com.shawnlin.numberpicker.NumberPicker
-import kotlinx.android.synthetic.main.list_item_location.view.*
+import kotlinx.android.synthetic.main.item_location.view.*
 
 class LocationAdapterItem(val location: Location) :
     AbstractItem<LocationAdapterItem, LocationAdapterItem.ViewHolder>(),
@@ -17,7 +17,7 @@ class LocationAdapterItem(val location: Location) :
 
     override fun getIdentifier() = location.id.hashCode().toLong()
 
-    override fun getLayoutRes() = R.layout.list_item_location
+    override fun getLayoutRes() = R.layout.item_location
 
     override fun getType() = layoutRes
 

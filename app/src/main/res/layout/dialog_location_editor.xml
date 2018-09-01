@@ -75,6 +75,6 @@
         android:paddingEnd="20dp"
         android:text="@string/save"
         android:textColor="@color/colorPrimaryDark"
-        android:background="@drawable/bg_rounded_ripple"/>
+        android:background="@drawable/bg_outline_primary_dark_ripple"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

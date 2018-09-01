@@ -10,6 +10,6 @@
         </shape>
     </item>
 
-    <item android:drawable="@drawable/bg_rounded" />
+    <item android:drawable="@drawable/bg_outline_primary_dark" />
 
 </ripple>

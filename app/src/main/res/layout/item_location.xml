@@ -97,6 +97,25 @@
             app:cardCornerRadius="3dp">
 
             <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/vShare"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_share"
+                android:tint="@android:color/white"
+                android:background="?android:selectableItemBackgroundBorderless"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="3dp"
+            app:cardBackgroundColor="@color/grey600"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="3dp">
+
+            <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/vEdit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:maxLines="1"
-        android:text="༼ つ ◕_◕ ༽つ"
-        android:textSize="30sp"
+        android:text="¯\\_(ツ)_/¯"
+        android:textSize="40sp"
         android:textColor="@color/grey400"/>
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:text="@string/no_location_found"
+        android:text="@string/no_recipe_found"
         android:textColor="@color/grey400"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 

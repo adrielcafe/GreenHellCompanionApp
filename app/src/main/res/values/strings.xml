@@ -4,7 +4,7 @@
     <string name="unofficial_companion">Unofficial Companion</string>
     <string name="location_name">Location name</string>
     <string name="locations">Locations</string>
-    <string name="recipes">Recipes</string>
+    <string name="crafting">Crafting</string>
     <string name="map">Map</string>
     <string name="save">Save</string>
     <string name="location_deleted">Location deleted</string>
@@ -12,6 +12,15 @@
     <string name="lets_give_name_location">༼ つ ◕_◕ ༽つ Give a name for your location</string>
     <string name="name_too_long">¯\\_(ツ)_/¯ This name is tooooo long</string>
     <string name="no_location_found">No location found</string>
+    <string name="no_recipe_found">No recipe found</string>
     <string name="coming_soon">Coming soon</string>
+    <string name="all">All</string>
+    <string name="campsite">Campsite</string>
+    <string name="food">Food</string>
+    <string name="medicine">Medicine</string>
+    <string name="shelter">Shelter</string>
+    <string name="tool">Tool</string>
+    <string name="trap">Trap</string>
+    <string name="weapon">Weapon</string>
 
 </resources>

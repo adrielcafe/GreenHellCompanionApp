@@ -1,7 +1,9 @@
 package cafe.adriel.greenhell
 
 import android.app.Application
+import cafe.adriel.greenhell.repository.CraftingRepository
 import cafe.adriel.greenhell.repository.LocationRepository
+import cafe.adriel.greenhell.view.main.crafting.CraftingViewModel
 import cafe.adriel.greenhell.view.main.locations.LocationsViewModel
 import com.esotericsoftware.minlog.Log
 import com.github.ajalt.timberkt.Timber
@@ -12,11 +14,14 @@ import org.koin.dsl.module.module
 
 class App : Application() {
 
+    // DI
     private val viewModelsModule = module {
         viewModel { LocationsViewModel(get()) }
+        viewModel { CraftingViewModel(get()) }
     }
     private val repositoriesModule = module {
         single { LocationRepository() }
+        single { CraftingRepository(this@App) }
     }
 
     override fun onCreate() {

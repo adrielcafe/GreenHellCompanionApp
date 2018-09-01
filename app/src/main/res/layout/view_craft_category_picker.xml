@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="cafe.adriel.greenhell.view.custom.CraftCategoryPickerView">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/vCategoriesLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/vCategoryAll"
+            android:text="@string/all"
+            style="@style/CraftCategory"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/vCategoryCampsite"
+            android:text="@string/campsite"
+            style="@style/CraftCategory"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/vCategoryFood"
+            android:text="@string/food"
+            style="@style/CraftCategory"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/vCategoryMedicine"
+            android:text="@string/medicine"
+            style="@style/CraftCategory"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/vCategoryShelter"
+            android:text="@string/shelter"
+            style="@style/CraftCategory"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/vCategoryTool"
+            android:text="@string/tool"
+            style="@style/CraftCategory"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/vCategoryTrap"
+            android:text="@string/trap"
+            style="@style/CraftCategory"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/vCategoryWeapon"
+            android:text="@string/weapon"
+            style="@style/CraftCategory"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</HorizontalScrollView>
