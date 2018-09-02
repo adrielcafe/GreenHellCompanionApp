@@ -5,51 +5,78 @@ import android.graphics.Color
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.HorizontalScrollView
+import android.widget.FrameLayout
 import androidx.appcompat.widget.AppCompatButton
-import androidx.core.view.forEach
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import cafe.adriel.greenhell.R
 import cafe.adriel.greenhell.model.CraftCategory
+import com.github.ajalt.timberkt.e
+import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter
+import com.mikepenz.fastadapter.items.AbstractItem
 import kotlinx.android.synthetic.main.view_craft_category_picker.view.*
 
-class CraftCategoryPickerView(context: Context, attrs: AttributeSet) :
-    HorizontalScrollView(context, attrs), View.OnClickListener {
+class CraftCategoryPickerView(context: Context, attrs: AttributeSet) : FrameLayout(context, attrs) {
 
     private lateinit var listener: (CraftCategory) -> Unit
+    private lateinit var adapter: FastItemAdapter<CraftCategoryAdapterItem>
 
     init {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view = inflater.inflate(R.layout.view_craft_category_picker, this, true)
 
-        isVerticalScrollBarEnabled = false
-        isHorizontalScrollBarEnabled = false
+        if(!::adapter.isInitialized) {
+            adapter = FastItemAdapter()
+            adapter.setHasStableIds(true)
+            adapter.withSelectable(true)
+            adapter.withOnClickListener { v, adapter, item, position ->
+                v?.let { onListItemClicked(it, item, position) }
+                true
+            }
+        }
 
         with(view){
-            vCategoryAll.setOnClickListener(this@CraftCategoryPickerView)
-            vCategoryCampsite.setOnClickListener(this@CraftCategoryPickerView)
-            vCategoryFood.setOnClickListener(this@CraftCategoryPickerView)
-            vCategoryMedicine.setOnClickListener(this@CraftCategoryPickerView)
-            vCategoryShelter.setOnClickListener(this@CraftCategoryPickerView)
-            vCategoryTool.setOnClickListener(this@CraftCategoryPickerView)
-            vCategoryTrap.setOnClickListener(this@CraftCategoryPickerView)
-            vCategoryWeapon.setOnClickListener(this@CraftCategoryPickerView)
+            vCategories.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+            vCategories.adapter = adapter
+        }
+
+        val items = CraftCategory.values().map { CraftCategoryAdapterItem(it) }
+        adapter.clear()
+        adapter.add(items)
+        selectDefaultCategory()
+    }
+
+    private fun onListItemClicked(view: View, item: CraftCategoryAdapterItem, position: Int) {
+        selectCategory(view, item, position)
+        listener(item.craftCategory)
+    }
+
+    private fun selectCategory(view: View, item: CraftCategoryAdapterItem, position: Int){
+        unSelectAllCategories()
+        with(view){
+            item.setCategorySelected(this, true)
         }
     }
 
-    override fun onClick(v: View?) {
-        v?.let {
-            val category = when(it.id){
-                R.id.vCategoryCampsite -> CraftCategory.CAMPSITE
-                R.id.vCategoryFood -> CraftCategory.FOOD
-                R.id.vCategoryMedicine -> CraftCategory.MEDICINE
-                R.id.vCategoryShelter -> CraftCategory.SHELTER
-                R.id.vCategoryTool -> CraftCategory.TOOL
-                R.id.vCategoryTrap -> CraftCategory.TRAP
-                R.id.vCategoryWeapon -> CraftCategory.WEAPON
-                else -> CraftCategory.ALL
+    private fun selectDefaultCategory(){
+        unSelectAllCategories()
+
+        vCategories.post {
+            val item = adapter.adapterItems.first()
+            val viewHolder = vCategories.findViewHolderForAdapterPosition(0)
+            e { "DEFAULT ${item.craftCategory} $viewHolder" }
+            viewHolder?.itemView?.run {
+                item.setCategorySelected(this, true)
             }
-            selectCategory(category)
-            listener(category)
+        }
+    }
+
+    private fun unSelectAllCategories(){
+        adapter.adapterItems.forEachIndexed { index, item ->
+            val viewHolder = vCategories.findViewHolderForAdapterPosition(index)
+            viewHolder?.itemView?.run {
+                item.setCategorySelected(this, false)
+            }
         }
     }
 
@@ -57,36 +84,45 @@ class CraftCategoryPickerView(context: Context, attrs: AttributeSet) :
         this.listener = listener
     }
 
-    fun selectCategory(category: CraftCategory){
-        unSelectAllCategories()
-        setCategorySelected(when(category){
-            CraftCategory.CAMPSITE -> vCategoryCampsite
-            CraftCategory.FOOD -> vCategoryFood
-            CraftCategory.MEDICINE -> vCategoryMedicine
-            CraftCategory.SHELTER -> vCategoryShelter
-            CraftCategory.TOOL -> vCategoryTool
-            CraftCategory.TRAP -> vCategoryTrap
-            CraftCategory.WEAPON -> vCategoryWeapon
-            else ->  vCategoryAll
-        }, true)
-    }
+    inner class CraftCategoryAdapterItem(val craftCategory: CraftCategory) :
+        AbstractItem<CraftCategoryAdapterItem, CraftCategoryAdapterItem.ViewHolder>() {
 
-    private fun unSelectAllCategories(){
-        vCategoriesLayout.forEach {
-            setCategorySelected(it, false)
-        }
-    }
+        override fun getIdentifier() = craftCategory.name.hashCode().toLong()
 
-    private fun setCategorySelected(view: View, selected: Boolean){
-        with(view as AppCompatButton) {
-            if (selected) {
-                setTextColor(Color.WHITE)
-                setBackgroundResource(R.drawable.bg_fill_accent_ripple)
-            } else {
-                setTextColor(Color.BLACK)
-                setBackgroundResource(R.drawable.bg_fill_white_ripple)
+        override fun getLayoutRes() = R.layout.item_craft_category
+
+        override fun getType() = layoutRes
+
+        override fun getViewHolder(v: View) = ViewHolder(v)
+
+        override fun bindView(holder: ViewHolder, payloads: MutableList<Any>) {
+            super.bindView(holder, payloads)
+            with(holder.itemView as AppCompatButton){
+                text = craftCategory.name
             }
         }
+
+        override fun unbindView(holder: ViewHolder) {
+            super.unbindView(holder)
+            with(holder.itemView as AppCompatButton){
+                text = ""
+                setCategorySelected(this, false)
+            }
+        }
+
+        fun setCategorySelected(view: View, selected: Boolean){
+            with(view as AppCompatButton) {
+                if (selected) {
+                    setTextColor(Color.WHITE)
+                    setBackgroundResource(R.drawable.bg_fill_accent_ripple)
+                } else {
+                    setTextColor(Color.BLACK)
+                    setBackgroundResource(R.drawable.bg_fill_white_ripple)
+                }
+            }
+        }
+
+        inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
     }
 
 }

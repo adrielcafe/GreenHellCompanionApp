@@ -70,7 +70,6 @@ class CraftingFragment : Fragment() {
             vCraftItems.adapter = adapter
 
             vCraftCategories.setListener { onCraftingCategorySelected(it) }
-            vCraftCategories.selectCategory(CraftCategory.ALL)
         }
 
         viewModel.getCraftItems().observe(this, Observer { showCraftingItems(it) })
