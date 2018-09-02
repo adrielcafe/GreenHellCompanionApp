@@ -8,4 +8,11 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="CategoryPickerView">
+        <attr name="cpvType" format="enum">
+            <enum name="location" value="0"/>
+            <enum name="crafting" value="1"/>
+        </attr>
+    </declare-styleable>
+
 </resources>

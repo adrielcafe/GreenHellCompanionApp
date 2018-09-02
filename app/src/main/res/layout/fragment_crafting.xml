@@ -8,12 +8,13 @@
     tools:background="@color/colorPrimaryDark"
     tools:context=".view.main.crafting.CraftingFragment">
 
-    <cafe.adriel.greenhell.view.custom.CraftCategoryPickerView
+    <cafe.adriel.greenhell.view.custom.CategoryPickerView
         android:id="@+id/vCraftCategories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        app:cpvType="crafting"/>
 
     <com.kennyc.view.MultiStateView
         android:id="@+id/vState"
@@ -32,7 +33,7 @@
             android:layout_height="match_parent"
             android:padding="5dp"
             android:clipToPadding="false"
-            tools:listitem="@layout/item_craft_item"/>
+            tools:listitem="@layout/item_crafting"/>
 
     </com.kennyc.view.MultiStateView>
 

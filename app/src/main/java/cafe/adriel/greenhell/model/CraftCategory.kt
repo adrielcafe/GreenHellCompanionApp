@@ -5,7 +5,6 @@ import cafe.adriel.greenhell.R
 
 enum class CraftCategory(@StringRes val nameResId: Int) {
 
-    ALL(R.string.all),
     CAMPSITE(R.string.campsite),
     FOOD(R.string.food),
     MEDICINE(R.string.medicine),

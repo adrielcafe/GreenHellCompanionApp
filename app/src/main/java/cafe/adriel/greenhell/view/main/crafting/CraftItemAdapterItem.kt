@@ -5,14 +5,14 @@ import androidx.recyclerview.widget.RecyclerView
 import cafe.adriel.greenhell.R
 import cafe.adriel.greenhell.model.CraftItem
 import com.mikepenz.fastadapter.items.AbstractItem
-import kotlinx.android.synthetic.main.item_craft_item.view.*
+import kotlinx.android.synthetic.main.item_crafting.view.*
 
 class CraftItemAdapterItem(val craftItem: CraftItem) :
     AbstractItem<CraftItemAdapterItem, CraftItemAdapterItem.ViewHolder>() {
 
     override fun getIdentifier() = craftItem.name.hashCode().toLong()
 
-    override fun getLayoutRes() = R.layout.item_craft_item
+    override fun getLayoutRes() = R.layout.item_crafting
 
     override fun getType() = layoutRes
 

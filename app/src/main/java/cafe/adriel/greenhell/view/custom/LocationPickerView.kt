@@ -12,27 +12,22 @@ import kotlinx.android.synthetic.main.view_location_picker.view.*
 class LocationPickerView(context: Context, attrs: AttributeSet) : RelativeLayout(context, attrs){
 
     companion object {
-        private const val LOCATION_WEST = 0
-        private const val LOCATION_SOUTH = 1
+        private const val DIRECTION_WEST = 0
+        private const val DIRECTION_SOUTH = 1
     }
-
-    private var direction: Int = -1
 
     init {
         val styleAttrs = context.theme.obtainStyledAttributes(attrs, R.styleable.LocationPickerView, 0, 0)
-        try {
-            direction = styleAttrs.getInt(R.styleable.LocationPickerView_lpvDirection, Color.BLACK)
-        } finally {
-            styleAttrs.recycle()
-        }
+        val direction = styleAttrs.getInt(R.styleable.LocationPickerView_lpvDirection, Color.BLACK)
+        styleAttrs.recycle()
 
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view = inflater.inflate(R.layout.view_location_picker, this, true)
         with(view){
             vLocationPosition.typeface = ResourcesCompat.getFont(context, R.font.digital_7)
             when(direction){
-                LOCATION_WEST -> vLocationDirection.text = "'W"
-                LOCATION_SOUTH -> vLocationDirection.text = "'S"
+                DIRECTION_WEST -> vLocationDirection.text = "'W"
+                DIRECTION_SOUTH -> vLocationDirection.text = "'S"
                 else -> vLocationDirection.text = ""
             }
         }

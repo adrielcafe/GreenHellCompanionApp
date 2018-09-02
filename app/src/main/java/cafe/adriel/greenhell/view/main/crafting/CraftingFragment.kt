@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cafe.adriel.greenhell.Analytics
 import cafe.adriel.greenhell.R
-import cafe.adriel.greenhell.model.CraftCategory
 import cafe.adriel.greenhell.model.CraftItem
 import cafe.adriel.greenhell.share
 import com.kennyc.view.MultiStateView
@@ -20,7 +19,7 @@ import com.mikepenz.fastadapter.listeners.ClickEventHook
 import com.mikepenz.fastadapter.listeners.ItemFilterListener
 import kotlinx.android.synthetic.main.fragment_crafting.*
 import kotlinx.android.synthetic.main.fragment_crafting.view.*
-import kotlinx.android.synthetic.main.item_craft_item.view.*
+import kotlinx.android.synthetic.main.item_crafting.view.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CraftingFragment : Fragment() {
@@ -42,7 +41,7 @@ class CraftingFragment : Fragment() {
             adapter = FastItemAdapter()
             adapter.setHasStableIds(true)
             adapter.itemFilter.withFilterPredicate { item, constraint ->
-                item.craftItem.category.name == constraint || CraftCategory.ALL.name == constraint
+                getString(item.craftItem.category.nameResId) == constraint
             }
             adapter.itemFilter.withItemFilterListener(object : ItemFilterListener<CraftItemAdapterItem> {
                 override fun itemsFiltered(constraint: CharSequence?, results: MutableList<CraftItemAdapterItem>?) {
@@ -81,8 +80,8 @@ class CraftingFragment : Fragment() {
         }
     }
 
-    private fun onCraftingCategorySelected(category: CraftCategory){
-        adapter.filter(category.name)
+    private fun onCraftingCategorySelected(categoryName: String){
+        adapter.filter(categoryName)
     }
 
     private fun showCraftingItems(craftingItems: List<CraftItem>){

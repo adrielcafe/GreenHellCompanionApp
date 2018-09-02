@@ -14,7 +14,6 @@
     <string name="no_location_found">Nenhum local encontrado</string>
     <string name="no_recipe_found">Nenhuma receita encontrada</string>
     <string name="coming_soon">Em breve</string>
-    <string name="all">Todos</string>
     <string name="campsite">Acampamento</string>
     <string name="food">Comida</string>
     <string name="medicine">Medicamento</string>
@@ -22,5 +21,10 @@
     <string name="tool">Ferramenta</string>
     <string name="trap">Armadilha</string>
     <string name="weapon">Arma</string>
+    <string name="my_locations">Meus Locais</string>
+    <string name="blueprint">Diagrama</string>
+    <string name="cave">Caverna</string>
+    <string name="water">Água</string>
+    <string name="other">Outro</string>
 
 </resources>
