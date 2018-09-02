@@ -9,6 +9,7 @@ import androidx.core.app.ShareCompat
 import okio.BufferedSource
 import okio.Okio
 import java.io.InputStream
+import java.text.Normalizer
 
 inline fun <reified T : Any> getClassTag(): String = T::class.java.simpleName
 
@@ -24,6 +25,11 @@ fun String.share(activity: Activity) =
         .setType("text/plain")
         .setText(this)
         .startChooser()
+
+fun String.normalize() = with(this){
+    Regex("\\p{InCombiningDiacriticalMarks}+")
+        .replace(Normalizer.normalize(this, Normalizer.Form.NFD), "")
+}
 
 fun Context.raw(@RawRes resId: Int): InputStream = resources.openRawResource(resId)
 

@@ -17,6 +17,7 @@ import com.kennyc.view.MultiStateView
 import com.mikepenz.fastadapter.FastAdapter
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter
 import com.mikepenz.fastadapter.listeners.ClickEventHook
+import com.mikepenz.fastadapter.listeners.ItemFilterListener
 import com.mikepenz.fastadapter_extensions.drag.ItemTouchCallback
 import com.mikepenz.fastadapter_extensions.drag.SimpleDragCallback
 import kotlinx.android.synthetic.main.fragment_locations.*
@@ -45,6 +46,19 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
         if(!::adapter.isInitialized) {
             adapter = FastItemAdapter()
             adapter.setHasStableIds(true)
+            adapter.itemFilter.withFilterPredicate { item, constraint ->
+                getString(item.location.category.nameResId) == constraint
+            }
+            adapter.itemFilter.withItemFilterListener(object :
+                ItemFilterListener<LocationAdapterItem> {
+                override fun itemsFiltered(constraint: CharSequence?, results: MutableList<LocationAdapterItem>?) {
+                    updateState()
+                }
+
+                override fun onReset() {
+                    updateState()
+                }
+            })
             adapter.withEventHook(object : ClickEventHook<LocationAdapterItem>() {
                 override fun onBindMany(viewHolder: RecyclerView.ViewHolder) =
                     viewHolder.itemView.run { listOf(vShare, vEdit, vDelete) }
@@ -58,12 +72,14 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
         }
 
         with(view){
+            ItemTouchHelper(SimpleDragCallback(this@LocationsFragment))
+                .attachToRecyclerView(vLocations)
+
             vLocations.setHasFixedSize(true)
             vLocations.layoutManager = LinearLayoutManager(context)
             vLocations.adapter = adapter
 
-            ItemTouchHelper(SimpleDragCallback(this@LocationsFragment))
-                .attachToRecyclerView(vLocations)
+            vLocationCategories.setListener { onCategorySelected(it) }
         }
 
         viewModel.getLocations().observe(this, Observer { showLocations(it) })
@@ -102,6 +118,10 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
             R.id.vEdit -> showLocationEditorDialog(item.location)
             R.id.vDelete -> deleteLocation(item.location)
         }
+    }
+
+    private fun onCategorySelected(categoryName: String){
+        adapter.filter(categoryName)
     }
 
     private fun showLocations(locations: List<Location>){

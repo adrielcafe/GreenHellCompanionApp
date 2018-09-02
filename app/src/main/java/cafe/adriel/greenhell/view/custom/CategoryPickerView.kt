@@ -12,9 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 import cafe.adriel.greenhell.R
 import cafe.adriel.greenhell.model.CraftCategory
 import cafe.adriel.greenhell.model.LocationCategory
+import cafe.adriel.greenhell.normalize
 import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter
 import com.mikepenz.fastadapter.items.AbstractItem
 import kotlinx.android.synthetic.main.view_category_picker.view.*
+import java.util.*
 
 class CategoryPickerView(context: Context, attrs: AttributeSet) : FrameLayout(context, attrs) {
 
@@ -54,37 +56,36 @@ class CategoryPickerView(context: Context, attrs: AttributeSet) : FrameLayout(co
 
     private fun onListItemClicked(view: View, item: CategoryAdapterItem, position: Int) {
         selectCategory(view, item)
-        listener(item.name)
     }
 
     private fun loadCategories(type: Int){
-        val categories = when (type){
-            TYPE_LOCATION -> LocationCategory.values().map { context.getString(it.nameResId) }
-            TYPE_CRAFTING -> CraftCategory.values().map { context.getString(it.nameResId) }.sorted()
-            else -> emptyList()
-        }
-        val items = categories.map { CategoryAdapterItem(it) }
+        val items = when (type){
+                TYPE_LOCATION -> LocationCategory.values().map { context.getString(it.nameResId) }
+                TYPE_CRAFTING -> CraftCategory.values().map { context.getString(it.nameResId) }
+                else -> emptyList()
+            }
+            .sortedWith(getCategoryComparator(type))
+            .map { CategoryAdapterItem(it) }
         adapter.clear()
         adapter.add(items)
     }
 
-    private fun selectCategory(view: View, item: CategoryAdapterItem){
-        unSelectAllCategories()
-        with(view){
-            item.setCategorySelected(this, true)
-        }
-    }
-
     private fun selectDefaultCategory(){
-        unSelectAllCategories()
-
         vCategories.post {
             val item = adapter.adapterItems.first()
             val viewHolder = vCategories.findViewHolderForAdapterPosition(0)
             viewHolder?.itemView?.run {
-                item.setCategorySelected(this, true)
+                selectCategory(this, item)
             }
         }
+    }
+
+    private fun selectCategory(view: View, item: CategoryAdapterItem){
+        unSelectAllCategories()
+        with(view) {
+            item.setCategorySelected(this, true)
+        }
+        listener(item.name)
     }
 
     private fun unSelectAllCategories(){
@@ -95,6 +96,22 @@ class CategoryPickerView(context: Context, attrs: AttributeSet) : FrameLayout(co
             }
         }
     }
+
+    // "My Locations" category should be first and "Other" category the last,
+    // No matter what the current language is
+    private fun getCategoryComparator(type: Int): Comparator<String> =
+        when(type){
+            TYPE_LOCATION -> Comparator { c1, c2 ->
+                if(c1 == context.getString(R.string.my_locations) || c2 == context.getString(R.string.my_locations)
+                    || c1 == context.getString(R.string.other) || c2 == context.getString(R.string.other))
+                    0
+                else
+                    c1.normalize().compareTo(c2.normalize())
+            }
+            else -> Comparator { c1, c2 ->
+                c1.normalize().compareTo(c2.normalize())
+            }
+        }
 
     fun setListener(listener: (String) -> Unit){
         this.listener = listener

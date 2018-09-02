@@ -1,6 +1,7 @@
 package cafe.adriel.greenhell.repository
 
 import cafe.adriel.greenhell.model.Location
+import cafe.adriel.greenhell.model.LocationCategory
 import io.paperdb.Paper
 
 class LocationRepository {
@@ -11,7 +12,11 @@ class LocationRepository {
 
     fun getLocations() =
         Paper.book(DB_LOCATION).allKeys
-            .map { Paper.book(DB_LOCATION).read(it) as Location }
+            .map {
+                val location = Paper.book(DB_LOCATION).read(it) as Location
+                if(location.category == null) location.category = LocationCategory.MY_LOCATIONS
+                location
+            }
             .sortedBy { it.index }
 
     fun saveLocation(location: Location) {

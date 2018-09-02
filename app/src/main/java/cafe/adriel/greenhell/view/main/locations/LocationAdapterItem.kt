@@ -4,6 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import cafe.adriel.greenhell.R
 import cafe.adriel.greenhell.model.Location
+import cafe.adriel.greenhell.model.LocationCategory
 import com.mikepenz.fastadapter.items.AbstractItem
 import com.mikepenz.fastadapter_extensions.drag.IDraggable
 import com.shawnlin.numberpicker.NumberPicker
@@ -13,7 +14,7 @@ class LocationAdapterItem(val location: Location) :
     AbstractItem<LocationAdapterItem, LocationAdapterItem.ViewHolder>(),
     IDraggable<LocationAdapterItem, LocationAdapterItem> {
 
-    private var draggable = true
+    private val userLocation = location.category == LocationCategory.MY_LOCATIONS
 
     override fun getIdentifier() = location.id.hashCode().toLong()
 
@@ -31,6 +32,15 @@ class LocationAdapterItem(val location: Location) :
             vName.text = location.name
             vWestPosition.text = "$westPosition'W"
             vSouthPosition.text = "$southPosition'S"
+            if(userLocation) {
+                vDrag.visibility = View.VISIBLE
+                vEdit.visibility = View.VISIBLE
+                vDelete.visibility = View.VISIBLE
+            } else {
+                vDrag.visibility = View.GONE
+                vEdit.visibility = View.GONE
+                vDelete.visibility = View.GONE
+            }
         }
     }
 
@@ -44,10 +54,9 @@ class LocationAdapterItem(val location: Location) :
         }
     }
 
-    override fun isDraggable() = draggable
+    override fun isDraggable() = userLocation
 
     override fun withIsDraggable(draggable: Boolean): LocationAdapterItem {
-        this.draggable = draggable
         return this
     }
 

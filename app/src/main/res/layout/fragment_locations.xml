@@ -1,24 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.kennyc.view.MultiStateView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/vState"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:msv_loadingView="@layout/state_loading"
-    app:msv_emptyView="@layout/state_empty_location"
-    app:msv_viewState="loading"
-    app:msv_animateViewChanges="true"
-    tools:context=".view.main.locations.LocationsFragment"
-    tools:msv_viewState="content">
+    tools:background="@color/colorPrimaryDark"
+    tools:context=".view.main.locations.LocationsFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/vLocations"
+    <cafe.adriel.greenhell.view.custom.CategoryPickerView
+        android:id="@+id/vLocationCategories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:cpvType="location"/>
+
+    <com.kennyc.view.MultiStateView
+        android:id="@+id/vState"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="5dp"
-        android:clipToPadding="false"
-        tools:listitem="@layout/item_location"/>
+        android:layout_below="@id/vLocationCategories"
+        app:msv_loadingView="@layout/state_loading"
+        app:msv_emptyView="@layout/state_empty_location"
+        app:msv_viewState="loading"
+        app:msv_animateViewChanges="true"
+        tools:msv_viewState="content">
 
-</com.kennyc.view.MultiStateView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/vLocations"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:clipToPadding="false"
+            tools:listitem="@layout/item_location"/>
+
+    </com.kennyc.view.MultiStateView>
+
+</RelativeLayout>

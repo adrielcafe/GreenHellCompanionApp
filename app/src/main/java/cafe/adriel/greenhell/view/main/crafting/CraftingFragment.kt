@@ -68,7 +68,7 @@ class CraftingFragment : Fragment() {
             vCraftItems.layoutManager = LinearLayoutManager(context)
             vCraftItems.adapter = adapter
 
-            vCraftCategories.setListener { onCraftingCategorySelected(it) }
+            vCraftCategories.setListener { onCategorySelected(it) }
         }
 
         viewModel.getCraftItems().observe(this, Observer { showCraftingItems(it) })
@@ -80,7 +80,7 @@ class CraftingFragment : Fragment() {
         }
     }
 
-    private fun onCraftingCategorySelected(categoryName: String){
+    private fun onCategorySelected(categoryName: String){
         adapter.filter(categoryName)
     }
 
