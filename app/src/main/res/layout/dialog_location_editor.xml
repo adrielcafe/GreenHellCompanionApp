@@ -29,7 +29,9 @@
         app:boxStrokeWidth="1dp"
         app:counterEnabled="true"
         app:counterMaxLength="50"
-        app:hintTextAppearance="@style/Hint">
+        app:hintTextAppearance="@style/Hint"
+        app:passwordToggleEnabled="false"
+        app:passwordToggleDrawable="@null">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/vName"
