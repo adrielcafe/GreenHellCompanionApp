@@ -172,7 +172,7 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
 
     private fun shareLocation(location: Location){
         activity?.run {
-            "${location.westPosition}'W ${location.southPosition}'S: ${location.name}".share(this)
+            "${location.westPosition}'W ${location.southPosition}'S\n${location.name}".share(this)
             Analytics.logShareLocation(location)
         }
     }

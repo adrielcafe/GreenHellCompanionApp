@@ -5,13 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/vSwipeMenu"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="wrap_content"
     android:elevation="1dp">
 
     <androidx.cardview.widget.CardView
         android:id="@id/smContentView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="80dp"
         android:background="@android:color/white"
         app:cardCornerRadius="3dp"
         app:cardUseCompatPadding="true"
@@ -41,8 +42,8 @@
                 android:id="@+id/vSouthPosition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="3dp"
+                android:layout_below="@id/vWestPosition"
+                android:layout_marginTop="3dp"
                 android:maxLines="1"
                 android:textColor="@android:color/black"
                 android:textSize="25sp"
@@ -53,14 +54,12 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/vName"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="20dp"
                 android:layout_toEndOf="@id/vWestPosition"
                 android:layout_toStartOf="@id/vDrag"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="2"
+                android:layout_centerVertical="true"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 app:fontFamily="sans-serif-smallcaps"
@@ -84,11 +83,12 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@id/smMenuViewLeft"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="80dp"
         android:gravity="start|center_vertical"
         android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/vShareLayout"
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="3dp"
@@ -108,6 +108,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/vEditLayout"
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="3dp"
@@ -127,6 +128,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/vDeleteLayout"
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="3dp"

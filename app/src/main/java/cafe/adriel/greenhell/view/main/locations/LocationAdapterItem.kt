@@ -34,12 +34,12 @@ class LocationAdapterItem(val location: Location) :
             vSouthPosition.text = "$southPosition'S"
             if(userLocation) {
                 vDrag.visibility = View.VISIBLE
-                vEdit.visibility = View.VISIBLE
-                vDelete.visibility = View.VISIBLE
+                vEditLayout.visibility = View.VISIBLE
+                vDeleteLayout.visibility = View.VISIBLE
             } else {
                 vDrag.visibility = View.GONE
-                vEdit.visibility = View.GONE
-                vDelete.visibility = View.GONE
+                vEditLayout.visibility = View.GONE
+                vDeleteLayout.visibility = View.GONE
             }
         }
     }

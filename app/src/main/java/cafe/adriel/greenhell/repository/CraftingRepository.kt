@@ -12,7 +12,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 class CraftingRepository(private val appContext: Context) {
 
     companion object {
-        private const val DB_CRAFT_ITEMS = R.raw.craft_items
+        private const val JSON_CRAFT_ITEMS = R.raw.craft_items
     }
 
     private val moshi by lazy {
@@ -26,7 +26,7 @@ class CraftingRepository(private val appContext: Context) {
     }
 
     fun getCraftItems(): List<CraftItem> {
-        val itemsJson = appContext.raw(DB_CRAFT_ITEMS).buffer()
+        val itemsJson = appContext.raw(JSON_CRAFT_ITEMS).buffer()
         val items = craftItemListAdapter.fromJson(itemsJson)?.sortedBy { it.name }
         return items ?: emptyList()
     }

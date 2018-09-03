@@ -11,8 +11,7 @@
         android:theme="@style/AppTheme"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:allowBackup="true"
-        android:supportsRtl="true">
+        android:allowBackup="true">
         <activity
             android:name=".view.main.MainActivity"
             android:screenOrientation="portrait">

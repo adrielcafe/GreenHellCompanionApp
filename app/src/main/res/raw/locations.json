@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Smoker\nTribal Fire Starter",
+    "westPosition": 37,
+    "southPosition": 19,
+    "category": "BLUEPRINT"
+  },
+  {
+    "name": "Snare Trap",
+    "westPosition": 41,
+    "southPosition": 19,
+    "category": "BLUEPRINT"
+  },
+  {
+    "name": "Log Bed",
+    "westPosition": 40,
+    "southPosition": 24,
+    "category": "BLUEPRINT"
+  },
+  {
+    "name": "Stone ring\nCampfire\nTribal Fire Starter\nBone Knife\nCage Trap",
+    "westPosition": 46,
+    "southPosition": 26,
+    "category": "BLUEPRINT"
+  },
+  {
+    "name": "Weapon rack\nTribal Fire Starter",
+    "westPosition": 47,
+    "southPosition": 18,
+    "category": "BLUEPRINT"
+  },
+  {
+    "name": "Bamboo Smoker\nTorch (Extended Burn Time)\nBamboo Shelter\nBow",
+    "westPosition": 52,
+    "southPosition": 17,
+    "category": "BLUEPRINT"
+  },
+  {
+    "name": "Water Filter\nStick Fish Trap\nFour Pronged Spear",
+    "westPosition": 51,
+    "southPosition": 19,
+    "category": "BLUEPRINT"
+  },
+  {
+    "name": "Water Collector\nKiller Trap",
+    "westPosition": 51,
+    "southPosition": 28,
+    "category": "BLUEPRINT"
+  }
+]

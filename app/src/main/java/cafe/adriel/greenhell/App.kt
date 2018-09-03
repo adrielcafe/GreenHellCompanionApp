@@ -20,7 +20,7 @@ class App : Application() {
         viewModel { CraftingViewModel(get()) }
     }
     private val repositoriesModule = module {
-        single { LocationRepository() }
+        single { LocationRepository(this@App) }
         single { CraftingRepository(this@App) }
     }
 
