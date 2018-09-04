@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".view.fullscreenimage.FullScreenImageActivity">
+
+    <com.jsibbold.zoomage.ZoomageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/map"
+        app:zoomage_autoResetMode="NEVER"/>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/vClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_gravity="top|end"
+        android:background="?actionBarItemBackground"
+        app:srcCompat="@drawable/ic_fullscreen_exit"
+        app:tint="@android:color/white"/>
+
+</FrameLayout>

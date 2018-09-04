@@ -28,7 +28,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.viewpager.widget.ViewPager
+    <cafe.adriel.greenhell.view.custom.NonSwipeableViewPager
         android:id="@+id/vContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

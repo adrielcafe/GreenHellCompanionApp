@@ -5,14 +5,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:background="@color/colorPrimaryDark">
+    tools:background="@color/colorPrimaryDark"
+    tools:context=".view.main.map.MapFragment">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/coming_soon"
-        android:textColor="@color/grey400"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        app:cardElevation="3dp"
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="@color/colorPrimary">
+
+        <com.jsibbold.zoomage.ZoomageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/map"
+            app:zoomage_zoomable="false"
+            app:zoomage_restrictBounds="true"
+            app:zoomage_autoResetMode="NEVER"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/vFullscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_gravity="top|end"
+            android:background="?actionBarItemBackground"
+            app:srcCompat="@drawable/ic_fullscreen"
+            app:tint="@android:color/white"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/vCredits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:text="@string/unofficial_map_created_by"
+            android:textSize="10sp"
+            android:textStyle="italic"
+            android:textColor="@android:color/white"
+            android:textColorLink="@color/colorAccent"/>
+
+    </androidx.cardview.widget.CardView>
 
 </FrameLayout>

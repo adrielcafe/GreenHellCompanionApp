@@ -26,5 +26,6 @@
     <string name="cave">Caverna</string>
     <string name="water">Água</string>
     <string name="other">Outro</string>
+    <string name="unofficial_map_created_by">Mapa não-oficial criado por <a href="https://www.reddit.com/r/GreenHell/comments/9cr5nu/green_hell_map/">/u/Blightbuster</a></string>
 
 </resources>
