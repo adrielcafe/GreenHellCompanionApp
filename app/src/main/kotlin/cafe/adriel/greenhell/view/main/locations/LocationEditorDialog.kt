@@ -11,6 +11,7 @@ import cafe.adriel.greenhell.R
 import cafe.adriel.greenhell.SaveLocationEvent
 import cafe.adriel.greenhell.getClassTag
 import cafe.adriel.greenhell.model.Location
+import cafe.adriel.greenhell.model.LocationCategory
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.dialog_location_editor.*
 import kotlinx.android.synthetic.main.dialog_location_editor.view.*
@@ -71,7 +72,8 @@ class LocationEditorDialog : BottomSheetDialogFragment() {
                 this.name = name
                 this.westPosition = westPosition
                 this.southPosition = southPosition
-            } ?: Location(name, westPosition, southPosition)
+                this.category = LocationCategory.MY_LOCATIONS
+            } ?: Location(name, westPosition, southPosition, LocationCategory.MY_LOCATIONS)
 
         EventBus.getDefault().post(SaveLocationEvent(newLocation))
         dismiss()
@@ -79,7 +81,7 @@ class LocationEditorDialog : BottomSheetDialogFragment() {
 
     private fun isValid() = when {
         vName.text.isNullOrBlank() -> {
-            vNameLayout.error = getString(R.string.lets_give_name_location)
+            vNameLayout.error = getString(R.string.give_name_your_location)
             false
         }
         vName.text!!.length > vNameLayout.counterMaxLength -> {

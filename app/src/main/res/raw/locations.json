@@ -46,5 +46,17 @@
     "westPosition": 51,
     "southPosition": 28,
     "category": "BLUEPRINT"
+  },
+  {
+    "name": "Metal Pot\nPainkiller\nRusty Machete",
+    "westPosition": 51,
+    "southPosition": 28,
+    "category": "UNIQUE_ITEM"
+  },
+  {
+    "name": "Metal Water Canteen",
+    "westPosition": 44,
+    "southPosition": 17,
+    "category": "UNIQUE_ITEM"
   }
 ]

@@ -8,7 +8,7 @@
     <string name="save">Salvar</string>
     <string name="location_deleted">Local excluído</string>
     <string name="undo">Desfazer</string>
-    <string name="lets_give_name_location">༼ つ ◕_◕ ༽つ Dê um nome para seu local</string>
+    <string name="give_name_your_location">༼ つ ◕_◕ ༽つ Dê um nome para seu local</string>
     <string name="name_too_long">¯\\_(ツ)_/¯ Esse nome é muuuuuito grande</string>
     <string name="no_location_found">Nenhum local encontrado</string>
     <string name="no_recipe_found">Nenhuma receita encontrada</string>
@@ -20,7 +20,8 @@
     <string name="trap">Armadilha</string>
     <string name="weapon">Arma</string>
     <string name="my_locations">Meus Locais</string>
-    <string name="blueprint">Diagrama</string>
+    <string name="blueprints">Diagramas</string>
+    <string name="unique_items">Itens Únicos</string>
     <string name="cave">Caverna</string>
     <string name="water">Água</string>
     <string name="other">Outro</string>

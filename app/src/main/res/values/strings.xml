@@ -8,7 +8,7 @@
     <string name="save">Save</string>
     <string name="location_deleted">Location deleted</string>
     <string name="undo">Undo</string>
-    <string name="lets_give_name_location">༼ つ ◕_◕ ༽つ Give a name for your location</string>
+    <string name="give_name_your_location">༼ つ ◕_◕ ༽つ Give a name for your location</string>
     <string name="name_too_long">¯\\_(ツ)_/¯ This name is tooooo long</string>
     <string name="no_location_found">No location found</string>
     <string name="no_recipe_found">No recipe found</string>
@@ -20,7 +20,8 @@
     <string name="trap">Trap</string>
     <string name="weapon">Weapon</string>
     <string name="my_locations">My Locations</string>
-    <string name="blueprint">Blueprint</string>
+    <string name="blueprints">Blueprints</string>
+    <string name="unique_items">Unique Items</string>
     <string name="cave">Cave</string>
     <string name="water">Water</string>
     <string name="other">Other</string>
