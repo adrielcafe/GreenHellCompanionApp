@@ -21,10 +21,14 @@
             android:id="@+id/vToolbar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            app:title="@string/app_name"
-            app:subtitle="@string/unofficial_companion"
-            app:titleTextAppearance="@style/ToolbarTitle"
-            app:popupTheme="@style/AppTheme.PopupOverlay"/>
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                app:srcCompat="@drawable/logo"/>
+
+        </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 

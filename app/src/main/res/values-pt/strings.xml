@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="unofficial_companion">Companheiro Não-oficial</string>
     <string name="location_name">Nome do local</string>
     <string name="locations">Locais</string>
     <string name="crafting">Criação</string>
@@ -13,7 +12,6 @@
     <string name="name_too_long">¯\\_(ツ)_/¯ Esse nome é muuuuuito grande</string>
     <string name="no_location_found">Nenhum local encontrado</string>
     <string name="no_recipe_found">Nenhuma receita encontrada</string>
-    <string name="coming_soon">Em breve</string>
     <string name="campsite">Acampamento</string>
     <string name="food">Comida</string>
     <string name="medicine">Medicamento</string>
