@@ -83,8 +83,9 @@ dependencies {
     implementation "com.jsibbold:zoomage:1.1.0"
 
     // Util
-    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.5'
+    implementation "com.crashlytics.sdk.android:crashlytics:2.9.5"
     implementation "com.github.ajalt:timberkt:1.5.1"
+    implementation "com.github.tinsukE:icekick:0.4"
     implementation "org.greenrobot:eventbus:3.1.1"
 }
 

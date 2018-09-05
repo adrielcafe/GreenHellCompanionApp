@@ -13,6 +13,9 @@ import cafe.adriel.greenhell.getClassTag
 import cafe.adriel.greenhell.model.Location
 import cafe.adriel.greenhell.model.LocationCategory
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.tinsuke.icekick.extension.freezeInstanceState
+import com.tinsuke.icekick.extension.parcelState
+import com.tinsuke.icekick.extension.unfreezeInstanceState
 import kotlinx.android.synthetic.main.dialog_location_editor.*
 import kotlinx.android.synthetic.main.dialog_location_editor.view.*
 import org.greenrobot.eventbus.EventBus
@@ -32,13 +35,13 @@ class LocationEditorDialog : BottomSheetDialogFragment() {
         }
     }
 
-    private var location: Location? = null
+    private var location: Location? by parcelState()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        isCancelable = false
         arguments?.run {
             location = getParcelable(ARG_LOCATION)
         }
-        isCancelable = false
         return inflater.inflate(R.layout.dialog_location_editor, container, false)
     }
 
@@ -60,6 +63,16 @@ class LocationEditorDialog : BottomSheetDialogFragment() {
             vClose.setOnClickListener { dismiss() }
             vSave.setOnClickListener { saveLocation() }
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        freezeInstanceState(outState)
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        unfreezeInstanceState(savedInstanceState)
     }
 
     private fun saveLocation(){
