@@ -3,8 +3,10 @@ package cafe.adriel.greenhell
 import android.app.Activity
 import android.content.ClipDescription
 import android.content.Context
+import android.content.Intent
 import android.content.res.Resources
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.net.Uri
 import androidx.annotation.RawRes
 import androidx.core.app.ShareCompat
 import okio.BufferedSource
@@ -27,10 +29,12 @@ fun String.share(activity: Activity) =
         .setType(ClipDescription.MIMETYPE_TEXT_PLAIN)
         .startChooser()
 
-fun String.normalize() = with(this){
+fun String.normalize() =
     Regex("\\p{InCombiningDiacriticalMarks}+")
         .replace(Normalizer.normalize(this, Normalizer.Form.NFD), "")
-}
+
+fun Uri.open(activity: Activity) =
+    activity.startActivity(Intent(Intent.ACTION_VIEW).apply { data = this@open })
 
 fun Context.raw(@RawRes resId: Int): InputStream = resources.openRawResource(resId)
 

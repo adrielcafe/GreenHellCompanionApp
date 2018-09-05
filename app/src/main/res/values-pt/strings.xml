@@ -26,5 +26,9 @@
     <string name="water">Água</string>
     <string name="other">Outro</string>
     <string name="unofficial_map_created_by">Mapa não-oficial criado por <a href="https://www.reddit.com/r/GreenHell/comments/9cr5nu/green_hell_map/">/u/Blightbuster</a></string>
+    <string name="update_available">Atualização Disponível</string>
+    <string name="new_version_available_update_now">Uma nova versão está disponível. Deseja atualizar agora?</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
 
 </resources>

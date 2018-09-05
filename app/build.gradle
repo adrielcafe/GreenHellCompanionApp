@@ -63,6 +63,7 @@ dependencies {
 
     // Firebase
     implementation "com.google.firebase:firebase-core:16.0.3"
+    implementation "com.google.firebase:firebase-config:16.0.0"
 
     // DI
     implementation "org.koin:koin-androidx-viewmodel:1.0.0-beta-8"
