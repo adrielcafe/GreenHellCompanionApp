@@ -47,7 +47,7 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
             adapter = FastItemAdapter()
             adapter.setHasStableIds(true)
             adapter.itemFilter.withFilterPredicate { item, constraint ->
-                getString(item.location.category.nameResId) == constraint
+                constraint == getString(item.location.category.nameResId)
             }
             adapter.itemFilter.withItemFilterListener(object :
                 ItemFilterListener<LocationAdapterItem> {
@@ -128,6 +128,7 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
         val adapterItems = locations.map { LocationAdapterItem(it) }
         adapter.clear()
         adapter.add(adapterItems)
+        vLocationCategories.selectDefaultCategory()
         updateState()
     }
 
@@ -147,8 +148,8 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
     }
 
     private fun deleteLocation(location: Location){
-        val position = getItemPositionByLocation(location)
         var shouldDelete = true
+        val position = getItemPositionByLocation(location)
         adapter.remove(position)
         updateState()
         activity?.run {
@@ -156,7 +157,6 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
                 .setAction(R.string.undo) {
                     shouldDelete = false
                     adapter.add(position, LocationAdapterItem(location))
-                    updateState()
                 }
                 .addCallback(object : BaseTransientBottomBar.BaseCallback<Snackbar>(){
                     override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {

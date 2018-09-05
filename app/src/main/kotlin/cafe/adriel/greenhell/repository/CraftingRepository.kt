@@ -5,9 +5,8 @@ import cafe.adriel.greenhell.R
 import cafe.adriel.greenhell.buffer
 import cafe.adriel.greenhell.model.CraftItem
 import cafe.adriel.greenhell.raw
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.Types
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kotlinx.coroutines.experimental.IO
+import kotlinx.coroutines.experimental.withContext
 
 class CraftingRepository(private val appContext: Context) {
 
@@ -15,20 +14,12 @@ class CraftingRepository(private val appContext: Context) {
         private const val JSON_CRAFT_ITEMS = R.raw.craft_items
     }
 
-    private val moshi by lazy {
-        Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
-    }
-    private val craftItemListAdapter by lazy {
-        val type = Types.newParameterizedType(List::class.java, CraftItem::class.java)
-        moshi.adapter<List<CraftItem>>(type)
-    }
+    private val craftItemListAdapter by lazy { JsonAdapterFactory.getListAdapter<CraftItem>() }
 
-    fun getCraftItems(): List<CraftItem> {
+    suspend fun getCraftItems() = withContext(IO){
         val itemsJson = appContext.raw(JSON_CRAFT_ITEMS).buffer()
         val items = craftItemListAdapter.fromJson(itemsJson)?.sortedBy { it.name }
-        return items ?: emptyList()
+        items ?: emptyList()
     }
 
 }

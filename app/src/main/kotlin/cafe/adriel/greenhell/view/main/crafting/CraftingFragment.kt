@@ -41,7 +41,7 @@ class CraftingFragment : Fragment() {
             adapter = FastItemAdapter()
             adapter.setHasStableIds(true)
             adapter.itemFilter.withFilterPredicate { item, constraint ->
-                getString(item.craftItem.category.nameResId) == constraint
+                constraint == getString(item.craftItem.category.nameResId)
             }
             adapter.itemFilter.withItemFilterListener(object : ItemFilterListener<CraftItemAdapterItem> {
                 override fun itemsFiltered(constraint: CharSequence?, results: MutableList<CraftItemAdapterItem>?) {
@@ -71,12 +71,12 @@ class CraftingFragment : Fragment() {
             vCraftCategories.setListener { onCategorySelected(it) }
         }
 
-        viewModel.getCraftItems().observe(this, Observer { showCraftingItems(it) })
+        viewModel.getCraftItems().observe(this, Observer { showCraftItems(it) })
     }
 
     private fun onListItemClicked(view: View, item: CraftItemAdapterItem, position: Int){
         when(view.id){
-            R.id.vShare -> shareCraftingItem(item.craftItem)
+            R.id.vShare -> shareCraftItem(item.craftItem)
         }
     }
 
@@ -84,17 +84,18 @@ class CraftingFragment : Fragment() {
         adapter.filter(categoryName)
     }
 
-    private fun showCraftingItems(craftingItems: List<CraftItem>){
-        val adapterItems = craftingItems.map { CraftItemAdapterItem(it) }
+    private fun showCraftItems(craftItems: List<CraftItem>){
+        val adapterItems = craftItems.map { CraftItemAdapterItem(it) }
         adapter.clear()
         adapter.add(adapterItems)
+        vCraftCategories.selectDefaultCategory()
         updateState()
     }
 
-    private fun shareCraftingItem(craftingItem: CraftItem){
+    private fun shareCraftItem(craftItem: CraftItem){
         activity?.run {
-            "${craftingItem.name} recipe:\n${craftingItem.description}".share(this)
-            Analytics.logShareCraftItem(craftingItem)
+            "${craftItem.name} recipe:\n${craftItem.description}".share(this)
+            Analytics.logShareCraftItem(craftItem)
         }
     }
 

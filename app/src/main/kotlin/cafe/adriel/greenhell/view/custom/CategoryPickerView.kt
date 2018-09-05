@@ -51,7 +51,6 @@ class CategoryPickerView(context: Context, attrs: AttributeSet) : FrameLayout(co
         }
 
         loadCategories(type)
-        selectDefaultCategory()
     }
 
     private fun onListItemClicked(view: View, item: CategoryAdapterItem, position: Int) {
@@ -70,7 +69,7 @@ class CategoryPickerView(context: Context, attrs: AttributeSet) : FrameLayout(co
         adapter.add(items)
     }
 
-    private fun selectDefaultCategory(){
+    fun selectDefaultCategory(){
         vCategories.post {
             val item = adapter.adapterItems.first()
             val viewHolder = vCategories.findViewHolderForAdapterPosition(0)
@@ -85,7 +84,9 @@ class CategoryPickerView(context: Context, attrs: AttributeSet) : FrameLayout(co
         with(view) {
             item.setCategorySelected(this, true)
         }
-        listener(item.name)
+        if(::listener.isInitialized) {
+            listener(item.name)
+        }
     }
 
     private fun unSelectAllCategories(){
