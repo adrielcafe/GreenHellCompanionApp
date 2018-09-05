@@ -10,6 +10,7 @@ object Analytics {
     private const val EVENT_SAVE_LOCATION = "save_location"
     private const val EVENT_SHARE_LOCATION = "share_location"
     private const val EVENT_SHARE_CRAFT_ITEM = "share_craft_item"
+    private const val EVENT_EXPAND_MAP = "expand_map"
 
     private const val PARAM_NAME = "name"
     private const val PARAM_WEST = "west"
@@ -44,6 +45,10 @@ object Analytics {
             putString(PARAM_NAME, craftItem.name)
         }
         analytics?.logEvent(EVENT_SHARE_CRAFT_ITEM, params)
+    }
+
+    fun logExpandMap(){
+        analytics?.logEvent(EVENT_EXPAND_MAP, null)
     }
 
 }
