@@ -87,6 +87,7 @@ dependencies {
     implementation "com.github.ajalt:timberkt:1.5.1"
     implementation "com.github.tinsukE:icekick:0.4"
     implementation "org.greenrobot:eventbus:3.1.1"
+    implementation "io.github.kobakei:ratethisapp:1.2.0"
 }
 
 apply plugin: 'com.google.gms.google-services'

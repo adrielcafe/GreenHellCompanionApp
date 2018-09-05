@@ -1,6 +1,7 @@
 package cafe.adriel.greenhell
 
 import android.app.Activity
+import android.content.ClipDescription
 import android.content.Context
 import android.content.res.Resources
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
@@ -22,8 +23,8 @@ val Int.px: Int
 fun String.share(activity: Activity) =
     ShareCompat.IntentBuilder
         .from(activity)
-        .setType("text/plain")
         .setText(this)
+        .setType(ClipDescription.MIMETYPE_TEXT_PLAIN)
         .startChooser()
 
 fun String.normalize() = with(this){

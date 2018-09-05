@@ -9,8 +9,11 @@ import com.esotericsoftware.minlog.Log
 import com.github.ajalt.timberkt.Timber
 import io.paperdb.Paper
 import org.koin.android.ext.android.startKoin
+import org.koin.android.logger.AndroidLogger
 import org.koin.androidx.viewmodel.ext.koin.viewModel
+import org.koin.core.Koin
 import org.koin.dsl.module.module
+import org.koin.log.EmptyLogger
 
 class App : Application() {
 
@@ -35,9 +38,11 @@ class App : Application() {
     private fun initLogging(){
         if (BuildConfig.RELEASE) {
             Paper.setLogLevel(Log.LEVEL_NONE)
+            Koin.logger = EmptyLogger()
         } else {
             Paper.setLogLevel(Log.LEVEL_DEBUG)
             Timber.plant(Timber.DebugTree())
+            Koin.logger = AndroidLogger()
         }
     }
 

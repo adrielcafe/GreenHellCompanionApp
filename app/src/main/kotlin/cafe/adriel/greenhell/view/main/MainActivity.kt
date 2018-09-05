@@ -9,6 +9,7 @@ import cafe.adriel.greenhell.R
 import cafe.adriel.greenhell.view.main.crafting.CraftingFragment
 import cafe.adriel.greenhell.view.main.locations.LocationsFragment
 import cafe.adriel.greenhell.view.main.map.MapFragment
+import com.kobakei.ratethisapp.RateThisApp
 import kotlinx.android.synthetic.main.activity_main.*
 import org.greenrobot.eventbus.EventBus
 
@@ -18,6 +19,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(vToolbar)
+
+        RateThisApp.onCreate(this)
+        RateThisApp.showRateDialogIfNeeded(this)
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
