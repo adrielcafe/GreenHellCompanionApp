@@ -190,12 +190,14 @@
     <orderEntry type="library" name="Gradle: androidx.media:media-1.0.0-rc01" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.61@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-ads-identifier-15.0.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.koin:koin-core:1.0.0-RC-2@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.mikepenz:fastadapter-extensions-3.3.0-rc01" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.moshi:moshi-kotlin:1.6.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.fragment:fragment-ktx-1.0.0-rc02" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-stats-15.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.crashlytics.sdk.android:crashlytics-2.9.5" level="project" />
     <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-process-2.0.0-rc01" level="project" />
+    <orderEntry type="library" name="Gradle: org.koin:koin-androidx-scope-1.0.0-RC-2" level="project" />
     <orderEntry type="library" name="Gradle: com.github.ajalt:timberkt-1.5.1" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:atomicfu-common:0.11.5@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.tubb.smrv:swipemenu-recyclerview-5.4.7" level="project" />
@@ -214,7 +216,6 @@
     <orderEntry type="library" name="Gradle: com.mikepenz:fastadapter-extensions-expandable-3.3.0-rc01" level="project" />
     <orderEntry type="library" name="Gradle: io.paperdb:paperdb-2.6" level="project" />
     <orderEntry type="library" name="Gradle: androidx.vectordrawable:vectordrawable-animated-1.0.0-rc02" level="project" />
-    <orderEntry type="library" name="Gradle: org.koin:koin-androidx-scope-1.0.0-beta-8" level="project" />
     <orderEntry type="library" name="Gradle: com.mikepenz:materialize-1.2.0-rc01" level="project" />
     <orderEntry type="library" name="Gradle: androidx.swiperefreshlayout:swiperefreshlayout-1.0.0-rc02" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.okio:okio:1.14.0@jar" level="project" />
@@ -229,7 +230,6 @@
     <orderEntry type="library" name="Gradle: androidx.viewpager:viewpager-1.0.0-rc02" level="project" />
     <orderEntry type="library" name="Gradle: com.github.tinsukE:icekick-0.4" level="project" />
     <orderEntry type="library" name="Gradle: com.esotericsoftware:minlog:1.3.0@jar" level="project" />
-    <orderEntry type="library" name="Gradle: org.koin:koin-androidx-viewmodel-1.0.0-beta-8" level="project" />
     <orderEntry type="library" name="Gradle: com.jsibbold:zoomage-1.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.esotericsoftware:kryo:4.0.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-runtime-2.0.0-rc01" level="project" />
@@ -238,14 +238,17 @@
     <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-extensions-2.0.0-rc01" level="project" />
     <orderEntry type="library" name="Gradle: androidx.fragment:fragment-1.0.0-rc02" level="project" />
     <orderEntry type="library" name="Gradle: androidx.lifecycle:lifecycle-livedata-core-2.0.0-rc01" level="project" />
+    <orderEntry type="library" name="Gradle: org.koin:koin-android-1.0.0-RC-2" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-reflect:1.2.21@jar" level="project" />
     <orderEntry type="library" name="Gradle: androidx.customview:customview-1.0.0-rc02" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-measurement-api-16.0.1" level="project" />
-    <orderEntry type="library" name="Gradle: org.koin:koin-core:1.0.0-beta-8@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-base-15.0.1" level="project" />
     <orderEntry type="library" name="Gradle: androidx.documentfile:documentfile-1.0.0-rc02" level="project" />
+    <orderEntry type="library" name="Gradle: org.koin:koin-androidx-viewmodel-1.0.0-RC-2" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-clearcut-15.0.1" level="project" />
     <orderEntry type="library" name="Gradle: androidx.transition:transition-1.0.0-rc01" level="project" />
     <orderEntry type="library" name="Gradle: androidx.slidingpanelayout:slidingpanelayout-1.0.0-rc02" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.firebase:firebase-perf-16.1.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-coroutines-core:0.25.3@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-iid-16.0.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-config-16.0.0" level="project" />
@@ -258,7 +261,6 @@
     <orderEntry type="library" name="Gradle: androidx.cardview:cardview-1.0.0-rc02" level="project" />
     <orderEntry type="library" name="Gradle: com.crashlytics.sdk.android:answers-1.4.3" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.2.61@jar" level="project" />
-    <orderEntry type="library" name="Gradle: org.koin:koin-android-1.0.0-beta-8" level="project" />
     <orderEntry type="library" name="Gradle: androidx.cursoradapter:cursoradapter-1.0.0-rc02" level="project" />
     <orderEntry type="library" name="Gradle: android-android-28" level="project" />
   </component>

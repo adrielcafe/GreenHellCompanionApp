@@ -143,6 +143,7 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
             adapter.itemFilter.add(LocationAdapterItem(location))
         }
         viewModel.saveLocation(location)
+        vLocationCategories.selectDefaultCategory()
         updateState()
     }
 

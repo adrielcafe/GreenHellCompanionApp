@@ -20,8 +20,12 @@ import org.koin.log.EmptyLogger
 class App : Application() {
 
     companion object {
-        val PLAY_STORE_URL = Uri.parse("https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}")
-        val MARKET_URL = Uri.parse("market://details?id=${BuildConfig.APPLICATION_ID}")
+        val PLAY_STORE_URL: Uri by lazy {
+            Uri.parse("https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}")
+        }
+        val MARKET_URL: Uri by lazy {
+            Uri.parse("market://details?id=${BuildConfig.APPLICATION_ID}")
+        }
     }
 
     // DI
