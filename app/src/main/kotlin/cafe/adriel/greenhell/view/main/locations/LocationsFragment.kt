@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cafe.adriel.greenhell.*
 import cafe.adriel.greenhell.model.Location
-import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.kennyc.view.MultiStateView
 import com.mikepenz.fastadapter.FastAdapter
@@ -126,8 +125,8 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
 
     private fun showLocations(locations: List<Location>){
         val adapterItems = locations.map { LocationAdapterItem(it) }
-        adapter.clear()
-        adapter.add(adapterItems)
+        adapter.itemFilter.clear()
+        adapter.itemFilter.add(adapterItems)
         vLocationCategories.selectDefaultCategory()
         updateState()
     }
@@ -141,31 +140,28 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
         if(position >= 0) {
             adapter.notifyAdapterItemChanged(position)
         } else {
-            adapter.add(LocationAdapterItem(location))
+            adapter.itemFilter.add(LocationAdapterItem(location))
         }
         viewModel.saveLocation(location)
         updateState()
     }
 
     private fun deleteLocation(location: Location){
-        var shouldDelete = true
         val position = getItemPositionByLocation(location)
-        adapter.remove(position)
+        adapter.itemFilter.remove(position)
+        viewModel.deleteLocation(location)
         updateState()
         activity?.run {
             Snackbar.make(findViewById(R.id.vRoot), R.string.location_deleted, Snackbar.LENGTH_LONG)
                 .setAction(R.string.undo) {
-                    shouldDelete = false
-                    adapter.add(position, LocationAdapterItem(location))
-                }
-                .addCallback(object : BaseTransientBottomBar.BaseCallback<Snackbar>(){
-                    override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
-                        if(shouldDelete) {
-                            viewModel.deleteLocation(location)
-                        }
-                        updateState()
+                    if(adapter.adapterItems.isEmpty()) {
+                        adapter.itemFilter.add(LocationAdapterItem(location))
+                    } else {
+                        adapter.itemFilter.add(position, LocationAdapterItem(location))
                     }
-                })
+                    viewModel.saveLocation(location)
+                    updateState()
+                }
                 .show()
         }
     }

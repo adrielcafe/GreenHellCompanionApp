@@ -80,9 +80,9 @@ dependencies {
     implementation "com.mikepenz:fastadapter-extensions:$fastAdapterVersion"
     implementation "com.mikepenz:fastadapter-extensions-expandable:$fastAdapterVersion"
     implementation "com.tubb.smrv:swipemenu-recyclerview:5.4.7"
-    implementation "com.shawnlin:number-picker:2.4.6"
     implementation "com.github.Kennyc1012:MultiStateView:1.3.2"
     implementation "com.jsibbold:zoomage:1.1.0"
+    implementation 'com.github.adrielcafe:NumberPicker:b6ac8d0078'
 
     // Util
     implementation "com.github.ajalt:timberkt:1.5.1"

@@ -86,8 +86,8 @@ class CraftingFragment : Fragment() {
 
     private fun showCraftItems(craftItems: List<CraftItem>){
         val adapterItems = craftItems.map { CraftItemAdapterItem(it) }
-        adapter.clear()
-        adapter.add(adapterItems)
+        adapter.itemFilter.clear()
+        adapter.itemFilter.add(adapterItems)
         vCraftCategories.selectDefaultCategory()
         updateState()
     }
