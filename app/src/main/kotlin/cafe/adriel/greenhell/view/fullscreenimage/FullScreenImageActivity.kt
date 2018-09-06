@@ -10,9 +10,8 @@ import kotlinx.android.synthetic.main.activity_fullscreen_image.*
 class FullScreenImageActivity : AppCompatActivity() {
 
     companion object {
-        fun start(context: Context) {
-            context.startActivity(Intent(context, FullScreenImageActivity::class.java))
-        }
+        fun start(context: Context) = context.startActivity(
+            Intent(context, FullScreenImageActivity::class.java))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

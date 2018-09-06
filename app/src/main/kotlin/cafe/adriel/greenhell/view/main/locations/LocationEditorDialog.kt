@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import cafe.adriel.greenhell.R
 import cafe.adriel.greenhell.SaveLocationEvent
-import cafe.adriel.greenhell.getClassTag
+import cafe.adriel.greenhell.classTag
 import cafe.adriel.greenhell.model.Location
 import cafe.adriel.greenhell.model.LocationCategory
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -30,7 +30,7 @@ class LocationEditorDialog : BottomSheetDialogFragment() {
                 arguments = Bundle().apply {
                     putParcelable(ARG_LOCATION, location)
                 }
-                show(fragmentManager, getClassTag<LocationEditorDialog>())
+                show(fragmentManager, classTag<LocationEditorDialog>())
             }
         }
     }
@@ -97,7 +97,7 @@ class LocationEditorDialog : BottomSheetDialogFragment() {
             vNameLayout.error = getString(R.string.give_name_your_location)
             false
         }
-        vName.text!!.length > vNameLayout.counterMaxLength -> {
+        vName.text?.length ?: 0 > vNameLayout.counterMaxLength -> {
             vNameLayout.error = getString(R.string.name_too_long)
             false
         }

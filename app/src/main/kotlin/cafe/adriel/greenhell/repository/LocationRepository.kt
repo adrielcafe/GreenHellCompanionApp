@@ -5,6 +5,7 @@ import cafe.adriel.greenhell.R
 import cafe.adriel.greenhell.buffer
 import cafe.adriel.greenhell.model.Location
 import cafe.adriel.greenhell.model.LocationCategory
+import cafe.adriel.greenhell.normalize
 import cafe.adriel.greenhell.raw
 import io.paperdb.Paper
 import kotlinx.coroutines.experimental.IO
@@ -23,12 +24,13 @@ class LocationRepository(private val appContext: Context) {
     suspend fun getLocations() = withContext(IO){
         val defaultLocationsJson = appContext.raw(JSON_LOCATIONS).buffer()
         val defaultLocations = locationListAdapter.fromJson(defaultLocationsJson) ?: emptyList()
-        val userLocations = dbUserLocations.allKeys
-            .map {
-                dbUserLocations.read<Location>(it).apply {
-                    category = LocationCategory.MY_LOCATIONS
-                }
+
+        val userLocations = dbUserLocations.allKeys.map {
+            dbUserLocations.read<Location>(it).apply {
+                category = LocationCategory.MY_LOCATIONS
             }
+        }
+
         (defaultLocations + userLocations).sortedWith(getLocationComparator())
     }
 
@@ -47,7 +49,7 @@ class LocationRepository(private val appContext: Context) {
     private fun getLocationComparator() = Comparator<Location> { l1, l2 ->
         val indexComparison = l1.index.compareTo(l2.index)
         if(indexComparison == 0){
-            l1.name.compareTo(l2.name)
+            l1.name.normalize().compareTo(l2.name.normalize())
         } else {
             indexComparison
         }

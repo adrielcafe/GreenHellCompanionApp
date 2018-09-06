@@ -9,14 +9,15 @@ import com.mikepenz.fastadapter.items.AbstractItem
 import com.mikepenz.fastadapter_extensions.drag.IDraggable
 import com.shawnlin.numberpicker.NumberPicker
 import kotlinx.android.synthetic.main.item_location.view.*
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.delay
+import kotlinx.coroutines.experimental.launch
 
 class LocationAdapterItem(val location: Location) :
     AbstractItem<LocationAdapterItem, LocationAdapterItem.ViewHolder>(),
     IDraggable<LocationAdapterItem, LocationAdapterItem> {
 
     private val userLocation = location.category == LocationCategory.MY_LOCATIONS
-
-    override fun getIdentifier() = location.id.hashCode().toLong()
 
     override fun getLayoutRes() = R.layout.item_location
 
@@ -61,8 +62,10 @@ class LocationAdapterItem(val location: Location) :
     }
 
     fun closeSwipeMenu(view: View){
-        with(view){
-            vSwipeMenu.smoothCloseMenu()
+        launch(UI) {
+            // Short delay for smooth animation
+            delay(200)
+            view.vSwipeMenu.smoothCloseMenu()
         }
     }
 

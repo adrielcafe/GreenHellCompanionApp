@@ -4,6 +4,7 @@ import android.content.Context
 import cafe.adriel.greenhell.R
 import cafe.adriel.greenhell.buffer
 import cafe.adriel.greenhell.model.CraftItem
+import cafe.adriel.greenhell.normalize
 import cafe.adriel.greenhell.raw
 import kotlinx.coroutines.experimental.IO
 import kotlinx.coroutines.experimental.withContext
@@ -18,8 +19,8 @@ class CraftingRepository(private val appContext: Context) {
 
     suspend fun getCraftItems() = withContext(IO){
         val itemsJson = appContext.raw(JSON_CRAFT_ITEMS).buffer()
-        val items = craftItemListAdapter.fromJson(itemsJson)?.sortedBy { it.name }
-        items ?: emptyList()
+        val items = craftItemListAdapter.fromJson(itemsJson) ?: emptyList()
+        items.sortedBy { it.name.normalize() }
     }
 
 }

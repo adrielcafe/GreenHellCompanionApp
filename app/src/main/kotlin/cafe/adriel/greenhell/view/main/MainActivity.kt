@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         vBottomNav.setOnNavigationItemSelectedListener { onNavItemSelected(it.itemId) }
         vAdd.setOnClickListener { onAddClicked() }
 
-        viewModel.appUpdateAvailable.observe(this, Observer { newVersion ->
+        viewModel.getAppUpdateAvailable().observe(this, Observer { newVersion ->
             if(newVersion) showUpdateAppDialog()
         })
     }
@@ -98,4 +98,5 @@ class MainActivity : AppCompatActivity() {
         override fun getCount() = sections.size
 
     }
+
 }

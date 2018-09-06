@@ -1,6 +1,5 @@
 package cafe.adriel.greenhell.view.custom
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
@@ -10,7 +9,6 @@ class NonSwipeableViewPager(context: Context, attrs: AttributeSet) : ViewPager(c
 
     override fun onInterceptTouchEvent(ev: MotionEvent?) = false
 
-    @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(ev: MotionEvent?) = false
 
 }

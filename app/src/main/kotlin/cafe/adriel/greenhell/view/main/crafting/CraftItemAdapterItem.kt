@@ -10,8 +10,6 @@ import kotlinx.android.synthetic.main.item_crafting.view.*
 class CraftItemAdapterItem(val craftItem: CraftItem) :
     AbstractItem<CraftItemAdapterItem, CraftItemAdapterItem.ViewHolder>() {
 
-    override fun getIdentifier() = craftItem.name.hashCode().toLong()
-
     override fun getLayoutRes() = R.layout.item_crafting
 
     override fun getType() = layoutRes

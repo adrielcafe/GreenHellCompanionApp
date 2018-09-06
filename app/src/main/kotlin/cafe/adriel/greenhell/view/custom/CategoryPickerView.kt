@@ -3,13 +3,13 @@ package cafe.adriel.greenhell.view.custom
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cafe.adriel.greenhell.R
+import cafe.adriel.greenhell.inflate
 import cafe.adriel.greenhell.model.CraftCategory
 import cafe.adriel.greenhell.model.LocationCategory
 import cafe.adriel.greenhell.normalize
@@ -25,8 +25,8 @@ class CategoryPickerView(context: Context, attrs: AttributeSet) : FrameLayout(co
         private const val TYPE_CRAFTING = 1
     }
 
-    private lateinit var listener: (String) -> Unit
     private lateinit var adapter: FastItemAdapter<CategoryAdapterItem>
+    private var listener: ((String) -> Unit)? = null
 
     init {
         val styleAttrs = context.theme.obtainStyledAttributes(attrs, R.styleable.CategoryPickerView, 0, 0)
@@ -35,17 +35,18 @@ class CategoryPickerView(context: Context, attrs: AttributeSet) : FrameLayout(co
 
         if(!::adapter.isInitialized) {
             adapter = FastItemAdapter()
-            adapter.setHasStableIds(true)
-            adapter.withSelectable(true)
-            adapter.withOnClickListener { v, _, item, position ->
-                v?.let { onListItemClicked(it, item, position) }
-                true
+            adapter.apply {
+                setHasStableIds(true)
+                withUseIdDistributor(true)
+                withSelectable(true)
+                withOnClickListener { view, _, item, _ ->
+                    view?.let { onListItemClicked(it, item) }
+                    true
+                }
             }
         }
 
-        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val view = inflater.inflate(R.layout.view_category_picker, this, true)
-        with(view){
+        with(inflate(R.layout.view_category_picker)){
             vCategories.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             vCategories.adapter = adapter
         }
@@ -53,7 +54,7 @@ class CategoryPickerView(context: Context, attrs: AttributeSet) : FrameLayout(co
         loadCategories(type)
     }
 
-    private fun onListItemClicked(view: View, item: CategoryAdapterItem, position: Int) {
+    private fun onListItemClicked(view: View, item: CategoryAdapterItem) {
         selectCategory(view, item)
     }
 
@@ -71,10 +72,9 @@ class CategoryPickerView(context: Context, attrs: AttributeSet) : FrameLayout(co
 
     fun selectDefaultCategory(){
         vCategories.post {
-            val item = adapter.adapterItems.first()
-            val viewHolder = vCategories.findViewHolderForAdapterPosition(0)
-            viewHolder?.itemView?.run {
-                selectCategory(this, item)
+            vCategories.findViewHolderForAdapterPosition(0)?.itemView?.run {
+                val firstItem = adapter.adapterItems.first()
+                selectCategory(this, firstItem)
             }
         }
     }
@@ -84,24 +84,21 @@ class CategoryPickerView(context: Context, attrs: AttributeSet) : FrameLayout(co
         with(view) {
             item.setCategorySelected(this, true)
         }
-        if(::listener.isInitialized) {
-            listener(item.name)
-        }
+        listener?.invoke(item.name)
     }
 
     private fun unSelectAllCategories(){
         adapter.adapterItems.forEachIndexed { index, item ->
-            val viewHolder = vCategories.findViewHolderForAdapterPosition(index)
-            viewHolder?.itemView?.run {
+            vCategories.findViewHolderForAdapterPosition(index)?.itemView?.run {
                 item.setCategorySelected(this, false)
             }
         }
     }
 
-    // "My Locations" category should be first and "Other" category the last,
-    // No matter what the current language is
     private fun getCategoryComparator(type: Int): Comparator<String> =
         when(type){
+            // "My Locations" category should be first and "Other" category the last,
+            // No matter what the current language is
             TYPE_LOCATION -> Comparator { c1, c2 ->
                 if(c1 == context.getString(R.string.my_locations) || c2 == context.getString(R.string.my_locations)
                     || c1 == context.getString(R.string.other) || c2 == context.getString(R.string.other))
@@ -118,10 +115,8 @@ class CategoryPickerView(context: Context, attrs: AttributeSet) : FrameLayout(co
         this.listener = listener
     }
 
-    inner class CategoryAdapterItem(val name: String) :
+    private inner class CategoryAdapterItem(val name: String) :
         AbstractItem<CategoryAdapterItem, CategoryAdapterItem.ViewHolder>() {
-
-        override fun getIdentifier() = name.hashCode().toLong()
 
         override fun getLayoutRes() = R.layout.item_category
 

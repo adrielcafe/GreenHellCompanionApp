@@ -8,6 +8,8 @@ enum class LocationCategory(@StringRes val nameResId: Int) {
     MY_LOCATIONS(R.string.my_locations),
     BLUEPRINT(R.string.blueprints),
     UNIQUE_ITEM(R.string.unique_items),
+
+    // TODO add later
 //    CAVE(R.string.cave),
 //    WATER(R.string.water),
 //    OTHER(R.string.other)

@@ -44,37 +44,37 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
         super.onViewCreated(view, savedInstanceState)
         if(!::adapter.isInitialized) {
             adapter = FastItemAdapter()
-            adapter.setHasStableIds(true)
-            adapter.itemFilter.withFilterPredicate { item, constraint ->
-                constraint == getString(item.location.category.nameResId)
-            }
-            adapter.itemFilter.withItemFilterListener(object :
-                ItemFilterListener<LocationAdapterItem> {
-                override fun itemsFiltered(constraint: CharSequence?, results: MutableList<LocationAdapterItem>?) {
-                    updateState()
-                }
+            adapter.apply {
+                setHasStableIds(true)
+                withUseIdDistributor(true)
+                withEventHook(object : ClickEventHook<LocationAdapterItem>() {
+                    override fun onBindMany(viewHolder: RecyclerView.ViewHolder) =
+                        viewHolder.itemView.run { listOf(vShare, vEdit, vDelete) }
 
-                override fun onReset() {
-                    updateState()
-                }
-            })
-            adapter.withEventHook(object : ClickEventHook<LocationAdapterItem>() {
-                override fun onBindMany(viewHolder: RecyclerView.ViewHolder) =
-                    viewHolder.itemView.run { listOf(vShare, vEdit, vDelete) }
-
-                override fun onClick(view: View?, position: Int, fastAdapter: FastAdapter<LocationAdapterItem>?, item: LocationAdapterItem?) {
-                    if (view != null && item != null) {
-                        onListItemClicked(view, item, position)
+                    override fun onClick(view: View?, position: Int, fastAdapter: FastAdapter<LocationAdapterItem>?, item: LocationAdapterItem?) {
+                        if (view != null && item != null) {
+                            onListItemClicked(view, item, position)
+                        }
                     }
+                })
+                itemFilter.withFilterPredicate { item, constraint ->
+                    constraint == getString(item.location.category.nameResId)
                 }
-            })
+                itemFilter.withItemFilterListener(object : ItemFilterListener<LocationAdapterItem> {
+                    override fun itemsFiltered(constraint: CharSequence?, results: MutableList<LocationAdapterItem>?) {
+                        updateState()
+                    }
+                    override fun onReset() {
+                        updateState()
+                    }
+                })
+            }
         }
 
         with(view){
             ItemTouchHelper(SimpleDragCallback(this@LocationsFragment))
                 .attachToRecyclerView(vLocations)
 
-            vLocations.setHasFixedSize(true)
             vLocations.layoutManager = LinearLayoutManager(context)
             vLocations.adapter = adapter
 
@@ -96,6 +96,7 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
 
     override fun itemTouchOnMove(oldPosition: Int, newPosition: Int): Boolean {
         Collections.swap(adapter.adapterItems, oldPosition, newPosition)
+        adapter.itemFilter.move(oldPosition, newPosition)
         adapter.notifyAdapterItemMoved(oldPosition, newPosition)
         return true
     }
@@ -155,7 +156,7 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
         activity?.run {
             Snackbar.make(findViewById(R.id.vRoot), R.string.location_deleted, Snackbar.LENGTH_LONG)
                 .setAction(R.string.undo) {
-                    if(adapter.adapterItems.isEmpty()) {
+                    if(adapter.adapterItems.isEmpty() || position >= adapter.adapterItemCount ) {
                         adapter.itemFilter.add(LocationAdapterItem(location))
                     } else {
                         adapter.itemFilter.add(position, LocationAdapterItem(location))
@@ -175,18 +176,19 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
     }
 
     private fun updateState(){
-        vState.viewState =
-                if(adapter.adapterItems.isEmpty()) MultiStateView.VIEW_STATE_EMPTY
-                else MultiStateView.VIEW_STATE_CONTENT
-    }
-
-    private fun closeSwipeMenu(position: Int){
-        val view = vLocations.getChildAt(position)
-        view?.let { adapter.getAdapterItem(position).closeSwipeMenu(it) }
+        vState.viewState = if(adapter.adapterItems.isEmpty())
+            MultiStateView.VIEW_STATE_EMPTY
+        else
+            MultiStateView.VIEW_STATE_CONTENT
     }
 
     private fun getItemPositionByLocation(location: Location) =
         adapter.adapterItems.indexOfFirst { location.id == it.location.id }
+
+    private fun closeSwipeMenu(position: Int) =
+        vLocations.findViewHolderForAdapterPosition(position)?.itemView?.let {
+            adapter.getAdapterItem(position).closeSwipeMenu(it)
+        }
 
     @Subscribe
     fun onEvent(event: AddLocationEvent){

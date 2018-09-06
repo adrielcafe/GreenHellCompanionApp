@@ -39,29 +39,31 @@ class CraftingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         if(!::adapter.isInitialized) {
             adapter = FastItemAdapter()
-            adapter.setHasStableIds(true)
-            adapter.itemFilter.withFilterPredicate { item, constraint ->
-                constraint == getString(item.craftItem.category.nameResId)
-            }
-            adapter.itemFilter.withItemFilterListener(object : ItemFilterListener<CraftItemAdapterItem> {
-                override fun itemsFiltered(constraint: CharSequence?, results: MutableList<CraftItemAdapterItem>?) {
-                    updateState()
-                }
+            adapter.apply {
+                setHasStableIds(true)
+                withUseIdDistributor(true)
+                withEventHook(object : ClickEventHook<CraftItemAdapterItem>() {
+                    override fun onBindMany(viewHolder: RecyclerView.ViewHolder) =
+                        viewHolder.itemView.run { listOf(vShare) }
 
-                override fun onReset() {
-                    updateState()
-                }
-            })
-            adapter.withEventHook(object : ClickEventHook<CraftItemAdapterItem>() {
-                override fun onBindMany(viewHolder: RecyclerView.ViewHolder) =
-                    viewHolder.itemView.run { listOf(vShare) }
-
-                override fun onClick(view: View?, position: Int, fastAdapter: FastAdapter<CraftItemAdapterItem>?, item: CraftItemAdapterItem?) {
-                    if (view != null && item != null) {
-                        onListItemClicked(view, item, position)
+                    override fun onClick(view: View?, position: Int, fastAdapter: FastAdapter<CraftItemAdapterItem>?, item: CraftItemAdapterItem?) {
+                        if (view != null && item != null) {
+                            onListItemClicked(view, item)
+                        }
                     }
+                })
+                itemFilter.withFilterPredicate { item, constraint ->
+                    constraint == getString(item.craftItem.category.nameResId)
                 }
-            })
+                itemFilter.withItemFilterListener(object : ItemFilterListener<CraftItemAdapterItem> {
+                    override fun itemsFiltered(constraint: CharSequence?, results: MutableList<CraftItemAdapterItem>?) {
+                        updateState()
+                    }
+                    override fun onReset() {
+                        updateState()
+                    }
+                })
+            }
         }
 
         with(view){
@@ -74,7 +76,7 @@ class CraftingFragment : Fragment() {
         viewModel.getCraftItems().observe(this, Observer { showCraftItems(it) })
     }
 
-    private fun onListItemClicked(view: View, item: CraftItemAdapterItem, position: Int){
+    private fun onListItemClicked(view: View, item: CraftItemAdapterItem){
         when(view.id){
             R.id.vShare -> shareCraftItem(item.craftItem)
         }
@@ -100,9 +102,10 @@ class CraftingFragment : Fragment() {
     }
 
     private fun updateState(){
-        vState.viewState =
-                if(adapter.adapterItems.isEmpty()) MultiStateView.VIEW_STATE_EMPTY
-                else MultiStateView.VIEW_STATE_CONTENT
+        vState.viewState = if(adapter.adapterItems.isEmpty())
+            MultiStateView.VIEW_STATE_EMPTY
+        else
+            MultiStateView.VIEW_STATE_CONTENT
     }
 
 }

@@ -1,12 +1,11 @@
 package cafe.adriel.greenhell.view.custom
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
-import android.view.LayoutInflater
 import android.widget.RelativeLayout
 import androidx.core.content.res.ResourcesCompat
 import cafe.adriel.greenhell.R
+import cafe.adriel.greenhell.inflate
 import kotlinx.android.synthetic.main.view_location_picker.view.*
 
 class LocationPickerView(context: Context, attrs: AttributeSet) : RelativeLayout(context, attrs){
@@ -18,12 +17,10 @@ class LocationPickerView(context: Context, attrs: AttributeSet) : RelativeLayout
 
     init {
         val styleAttrs = context.theme.obtainStyledAttributes(attrs, R.styleable.LocationPickerView, 0, 0)
-        val direction = styleAttrs.getInt(R.styleable.LocationPickerView_lpvDirection, Color.BLACK)
+        val direction = styleAttrs.getInt(R.styleable.LocationPickerView_lpvDirection, -1)
         styleAttrs.recycle()
 
-        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val view = inflater.inflate(R.layout.view_location_picker, this, true)
-        with(view){
+        with(inflate(R.layout.view_location_picker)){
             vLocationPosition.typeface = ResourcesCompat.getFont(context, R.font.digital_7)
             when(direction){
                 DIRECTION_WEST -> vLocationDirection.text = "'W"
