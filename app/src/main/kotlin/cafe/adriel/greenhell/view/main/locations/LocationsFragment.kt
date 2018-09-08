@@ -128,7 +128,7 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
         val adapterItems = locations.map { LocationAdapterItem(it) }
         adapter.itemFilter.clear()
         adapter.itemFilter.add(adapterItems)
-        vLocationCategories.selectDefaultCategory()
+        vLocationCategories?.selectDefaultCategory()
         updateState()
     }
 
@@ -144,7 +144,7 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
             adapter.itemFilter.add(LocationAdapterItem(location))
         }
         viewModel.saveLocation(location)
-        vLocationCategories.selectDefaultCategory()
+        vLocationCategories?.selectDefaultCategory()
         updateState()
     }
 
@@ -176,7 +176,7 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
     }
 
     private fun updateState(){
-        vState.viewState = if(adapter.adapterItems.isEmpty())
+        vState?.viewState = if(adapter.adapterItems.isEmpty())
             MultiStateView.VIEW_STATE_EMPTY
         else
             MultiStateView.VIEW_STATE_CONTENT
@@ -186,7 +186,7 @@ class LocationsFragment : Fragment(), ItemTouchCallback {
         adapter.adapterItems.indexOfFirst { location.id == it.location.id }
 
     private fun closeSwipeMenu(position: Int) =
-        vLocations.findViewHolderForAdapterPosition(position)?.itemView?.let {
+        vLocations?.findViewHolderForAdapterPosition(position)?.itemView?.let {
             adapter.getAdapterItem(position).closeSwipeMenu(it)
         }
 

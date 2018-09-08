@@ -90,7 +90,7 @@ class CraftingFragment : Fragment() {
         val adapterItems = craftItems.map { CraftItemAdapterItem(it) }
         adapter.itemFilter.clear()
         adapter.itemFilter.add(adapterItems)
-        vCraftCategories.selectDefaultCategory()
+        vCraftCategories?.selectDefaultCategory()
         updateState()
     }
 
@@ -102,7 +102,7 @@ class CraftingFragment : Fragment() {
     }
 
     private fun updateState(){
-        vState.viewState = if(adapter.adapterItems.isEmpty())
+        vState?.viewState = if(adapter.adapterItems.isEmpty())
             MultiStateView.VIEW_STATE_EMPTY
         else
             MultiStateView.VIEW_STATE_CONTENT
