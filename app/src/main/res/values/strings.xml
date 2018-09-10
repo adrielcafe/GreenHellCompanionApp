@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="unofficial_companion" translatable="false">Unofficial Companion</string>
+    <string name="adriel_cafe" translatable="false">Adriel Café</string>
+    <string name="android_developer" translatable="false">Android Developer</string>
+    <string name="adrielcafe_greenhellcompanionapp" translatable="false">adrielcafe/GreenHellCompanionApp</string>
+
+    <string name="hi_there_are_you_enjoying_the_app">Hi there! Are you enjoying the app? I hope so 😊\n\nIf you have any question, suggestion or want to contribute (new content, found a bug, translation…) please contact me using the links below.</string>
+    <string name="this_app_is_open_source">This app is open source, contributions are very welcome!</string>
     <string name="location_name">Location name</string>
     <string name="locations">Locations</string>
     <string name="crafting">Crafting</string>
@@ -30,5 +37,12 @@
     <string name="new_version_available_update_now">A new version is available. Do you want to update now?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="open_menu">Open menu</string>
+    <string name="close_menu">Close menu</string>
+    <string name="about">About</string>
+    <string name="buy_me_coffee">Buy Me A Coffee</string>
+    <string name="share">Share</string>
+    <string name="rate_review">Rate &amp; Review</string>
+    <string name="you_should_try">You should try Green Hell - Unofficial Companion, this app will help you survive in the Amazonian rainforest!</string>
 
 </resources>

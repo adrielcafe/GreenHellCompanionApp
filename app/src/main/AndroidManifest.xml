@@ -4,6 +4,7 @@
     package="cafe.adriel.greenhell">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
         android:name=".App"
@@ -22,8 +23,8 @@
         </activity>
         <activity
             android:name=".view.fullscreenimage.FullScreenImageActivity"
-            android:theme="@style/AppTheme.FullScreen">
-        </activity>
+            android:theme="@style/AppTheme.FullScreen"
+            android:parentActivityName=".view.main.MainActivity"/>
     </application>
 
 </manifest>

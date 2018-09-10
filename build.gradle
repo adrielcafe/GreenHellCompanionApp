@@ -1,6 +1,6 @@
 buildscript {
     ext.kotlinVersion = '1.2.61'
-    ext.materialVersion = '1.0.0-rc01'
+    ext.materialVersion = '1.0.0-rc02'
     ext.androidXVersion = '1.0.0-rc02'
     ext.lifecycleVersion = '2.0.0-rc01'
     ext.ktxVersion = '1.0.0-rc02'
@@ -12,7 +12,7 @@ buildscript {
         maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:3.2.0-rc02"
+        classpath 'com.android.tools.build:gradle:3.3.0-alpha08'
         classpath "com.google.gms:google-services:4.0.1"
         classpath 'com.google.firebase:firebase-plugins:1.1.5'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"

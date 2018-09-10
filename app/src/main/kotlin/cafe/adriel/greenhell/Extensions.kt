@@ -10,10 +10,12 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.RawRes
 import androidx.core.app.ShareCompat
 import androidx.core.content.getSystemService
+import androidx.core.content.res.ResourcesCompat
 import okio.BufferedSource
 import okio.Okio
 import java.io.InputStream
@@ -27,6 +29,8 @@ val Int.dp: Int
 val Int.px: Int
     get() = (this * Resources.getSystem().displayMetrics.density).toInt()
 
+fun Context.colorFrom(@ColorRes colorRes: Int) = ResourcesCompat.getColor(resources, colorRes, theme)
+
 fun String.share(activity: Activity) =
     ShareCompat.IntentBuilder
         .from(activity)
@@ -39,8 +43,8 @@ fun String.normalize() =
         .replace(Normalizer.normalize(this, Normalizer.Form.NFD), "")
         .toLowerCase()
 
-fun Uri.open(activity: Activity) =
-    activity.startActivity(Intent(Intent.ACTION_VIEW).apply { data = this@open })
+fun Uri.open(context: Context) =
+    context.startActivity(Intent(Intent.ACTION_VIEW).apply { data = this@open })
 
 fun View.inflater() = context.getSystemService<LayoutInflater>()!!
 

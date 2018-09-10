@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="hi_there_are_you_enjoying_the_app">Olá! Você está curtindo o app? Espero que sim 😊\n\nSe você tiver alguma dúvida, sugestão ou deseja contribuir (novo conteúdo, encontrou um bug, tradução…) por favor entre em contato comigo usando os links abaixo.</string>
+    <string name="this_app_is_open_source">Esse aplicativo é open source, contribuições são muito bem-vindas!</string>
     <string name="location_name">Nome do local</string>
     <string name="locations">Locais</string>
     <string name="crafting">Criação</string>
@@ -30,5 +32,12 @@
     <string name="new_version_available_update_now">Uma nova versão está disponível. Deseja atualizar agora?</string>
     <string name="yes">Sim</string>
     <string name="no">Não</string>
+    <string name="open_menu">Abrir menu</string>
+    <string name="close_menu">Fechar menu</string>
+    <string name="about">Sobre</string>
+    <string name="buy_me_coffee">Compre-me um Café</string>
+    <string name="share">Compartilhar</string>
+    <string name="rate_review">Avaliar</string>
+    <string name="you_should_try">Dá uma olhada em Green Hell - Unofficial Companion, esse app vai ajudá-lo a sobreviver na floresta amazônica!</string>
 
 </resources>

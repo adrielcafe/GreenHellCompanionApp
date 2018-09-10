@@ -15,7 +15,7 @@
         android:maxLines="1"
         android:text="༼ つ ◕_◕ ༽つ"
         android:textSize="30sp"
-        android:textColor="@color/grey400"/>
+        android:textColor="@color/md_grey_400"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
@@ -23,7 +23,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:text="@string/no_location_found"
-        android:textColor="@color/grey400"
+        android:textColor="@color/md_grey_400"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

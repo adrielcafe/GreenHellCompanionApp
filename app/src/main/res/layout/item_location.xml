@@ -74,7 +74,7 @@
                 android:layout_centerVertical="true"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/ic_menu"
-                app:tint="@color/grey400"/>
+                app:tint="@color/md_grey_400"/>
 
         </RelativeLayout>
 
@@ -92,7 +92,7 @@
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="3dp"
-            app:cardBackgroundColor="@color/grey600"
+            app:cardBackgroundColor="@color/md_grey_600"
             app:cardUseCompatPadding="true"
             app:cardCornerRadius="3dp">
 
@@ -112,7 +112,7 @@
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="3dp"
-            app:cardBackgroundColor="@color/grey600"
+            app:cardBackgroundColor="@color/md_grey_600"
             app:cardUseCompatPadding="true"
             app:cardCornerRadius="3dp">
 
@@ -132,7 +132,7 @@
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="3dp"
-            app:cardBackgroundColor="@color/grey600"
+            app:cardBackgroundColor="@color/md_grey_600"
             app:cardUseCompatPadding="true"
             app:cardCornerRadius="3dp">
 

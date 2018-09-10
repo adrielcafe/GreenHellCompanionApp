@@ -8,13 +8,18 @@ import com.google.firebase.analytics.FirebaseAnalytics
 
 object Analytics {
     private const val EVENT_SAVE_LOCATION = "save_location"
+    private const val EVENT_EXPAND_MAP = "expand_map"
+    private const val EVENT_RATE_APP = "rate_app"
+    private const val EVENT_SHARE_APP = "share_app"
     private const val EVENT_SHARE_LOCATION = "share_location"
     private const val EVENT_SHARE_CRAFT_ITEM = "share_craft_item"
-    private const val EVENT_EXPAND_MAP = "expand_map"
+    private const val EVENT_SEND_EMAIL = "send_email"
+    private const val EVENT_OPEN_URL = "open_url"
 
     private const val PARAM_NAME = "name"
     private const val PARAM_WEST = "west"
     private const val PARAM_SOUTH = "south"
+    private const val PARAM_URL = "url"
 
     private var analytics: FirebaseAnalytics? = null
 
@@ -33,6 +38,18 @@ object Analytics {
         analytics?.logEvent(EVENT_SAVE_LOCATION, params)
     }
 
+    fun logExpandMap(){
+        analytics?.logEvent(EVENT_EXPAND_MAP, null)
+    }
+
+    fun logRateApp(){
+        analytics?.logEvent(EVENT_RATE_APP, null)
+    }
+
+    fun logShareApp(){
+        analytics?.logEvent(EVENT_SHARE_APP, null)
+    }
+
     fun logShareLocation(location: Location){
         val params = Bundle().apply {
             putString(PARAM_NAME, location.name)
@@ -47,8 +64,15 @@ object Analytics {
         analytics?.logEvent(EVENT_SHARE_CRAFT_ITEM, params)
     }
 
-    fun logExpandMap(){
-        analytics?.logEvent(EVENT_EXPAND_MAP, null)
+    fun logSendEmail(){
+        analytics?.logEvent(EVENT_SEND_EMAIL, null)
+    }
+
+    fun logOpenUrl(url: String){
+        val params = Bundle().apply {
+            putString(PARAM_URL, url)
+        }
+        analytics?.logEvent(EVENT_SHARE_CRAFT_ITEM, params)
     }
 
 }

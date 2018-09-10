@@ -13,7 +13,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginStart="17dp"
         app:srcCompat="@drawable/ic_arrow_up"
-        app:tint="@color/grey600"/>
+        app:tint="@color/md_grey_600"/>
 
     <com.shawnlin.numberpicker.NumberPicker
         android:id="@+id/vLocationPosition"
@@ -36,7 +36,7 @@
         android:layout_marginTop="-35dp"
         android:layout_marginStart="17dp"
         app:srcCompat="@drawable/ic_arrow_down"
-        app:tint="@color/grey600"/>
+        app:tint="@color/md_grey_600"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/vLocationDirection"
