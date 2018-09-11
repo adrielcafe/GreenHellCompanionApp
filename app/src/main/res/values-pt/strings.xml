@@ -35,9 +35,12 @@
     <string name="open_menu">Abrir menu</string>
     <string name="close_menu">Fechar menu</string>
     <string name="about">Sobre</string>
-    <string name="buy_me_coffee">Compre-me um Café</string>
+    <string name="buy_me_coffee">Pague-me um Café</string>
     <string name="share">Compartilhar</string>
     <string name="rate_review">Avaliar</string>
     <string name="you_should_try">Dá uma olhada em Green Hell - Unofficial Companion, esse app vai ajudá-lo a sobreviver na floresta amazônica!</string>
+    <string name="thanks_for_support">Obrigado pelo seu apoio! ☕ 😋</string>
+    <string name="later">Depois</string>
+    <string name="donate">Doar</string>
 
 </resources>

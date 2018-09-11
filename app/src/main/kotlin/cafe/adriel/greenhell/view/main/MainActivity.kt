@@ -1,5 +1,6 @@
 package cafe.adriel.greenhell.view.main
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
@@ -13,17 +14,19 @@ import androidx.lifecycle.Observer
 import cafe.adriel.greenhell.*
 import cafe.adriel.greenhell.view.main.about.AboutDialog
 import cafe.adriel.greenhell.view.main.crafting.CraftingFragment
+import cafe.adriel.greenhell.view.main.donate.DonateDialog
 import cafe.adriel.greenhell.view.main.locations.LocationsFragment
 import cafe.adriel.greenhell.view.main.map.MapFragment
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.kobakei.ratethisapp.RateThisApp
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.delay
 import kotlinx.coroutines.experimental.launch
 import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -53,9 +56,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         vBottomNav.setOnNavigationItemSelectedListener { onNavItemSelected(it.itemId) }
         vAdd.setOnClickListener { onAddClicked() }
 
-        viewModel.getAppUpdateAvailable().observe(this, Observer { newVersion ->
-            if(newVersion) showUpdateAppDialog()
-        })
+        with(viewModel) {
+            getAppUpdateAvailable().observe(this@MainActivity, Observer { newVersion ->
+                if (newVersion)
+                    showUpdateAppDialog()
+            })
+            getPurchaseCompleted().observe(this@MainActivity, Observer { success ->
+                if (success)
+                    Snackbar.make(vRoot, R.string.thanks_for_support, Snackbar.LENGTH_LONG).show()
+            })
+            getBillingSupported().observe(this@MainActivity, Observer { supported ->
+                vDrawerNav.menu
+                    .findItem(R.id.nav_donate)
+                    .isVisible = supported
+            })
+        }
     }
 
     override fun onResume() {
@@ -71,6 +86,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (!viewModel.verifyDonation(requestCode, resultCode, data)) {
+            super.onActivityResult(requestCode, resultCode, data)
+        }
+    }
+
     // Drawer Nav listener
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -78,8 +109,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 delay(300)
                 AboutDialog.show(this@MainActivity)
             }
-            R.id.nav_donate -> {
-
+            R.id.nav_donate -> launch(UI) {
+                delay(300)
+                DonateDialog.show(this@MainActivity)
             }
             R.id.nav_share -> shareApp()
             R.id.nav_rate -> rateApp()
@@ -105,7 +137,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun onAddClicked(){
         when(vContent.currentItem){
-            0 -> EventBus.getDefault().post(AddLocationEvent())
+            0 -> postEvent(AddLocationEvent())
         }
     }
 
@@ -138,6 +170,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             Uri.parse(App.PLAY_STORE_URL).open(this)
             Analytics.logOpenUrl(App.PLAY_STORE_URL)
         }
+    }
+
+    @Subscribe
+    fun onEvent(event: DonateEvent){
+        viewModel.donate(this, event.sku)
+        Analytics.logDonate(event.sku)
     }
 
     inner class SectionsPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {

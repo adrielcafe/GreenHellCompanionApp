@@ -15,11 +15,13 @@ object Analytics {
     private const val EVENT_SHARE_CRAFT_ITEM = "share_craft_item"
     private const val EVENT_SEND_EMAIL = "send_email"
     private const val EVENT_OPEN_URL = "open_url"
+    private const val EVENT_DONATE = "donate"
 
     private const val PARAM_NAME = "name"
     private const val PARAM_WEST = "west"
     private const val PARAM_SOUTH = "south"
     private const val PARAM_URL = "url"
+    private const val PARAM_SKU = "sku"
 
     private var analytics: FirebaseAnalytics? = null
 
@@ -73,6 +75,13 @@ object Analytics {
             putString(PARAM_URL, url)
         }
         analytics?.logEvent(EVENT_SHARE_CRAFT_ITEM, params)
+    }
+
+    fun logDonate(sku: String){
+        val params = Bundle().apply {
+            putString(PARAM_SKU, sku)
+        }
+        analytics?.logEvent(EVENT_DONATE, params)
     }
 
 }

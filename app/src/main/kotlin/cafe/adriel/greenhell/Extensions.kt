@@ -18,10 +18,13 @@ import androidx.core.content.getSystemService
 import androidx.core.content.res.ResourcesCompat
 import okio.BufferedSource
 import okio.Okio
+import org.greenrobot.eventbus.EventBus
 import java.io.InputStream
 import java.text.Normalizer
 
 inline fun <reified T : Any> classTag(): String = T::class.java.simpleName
+
+fun <T> postEvent(event: T) = EventBus.getDefault().post(event)
 
 val Int.dp: Int
     get() = (this / Resources.getSystem().displayMetrics.density).toInt()

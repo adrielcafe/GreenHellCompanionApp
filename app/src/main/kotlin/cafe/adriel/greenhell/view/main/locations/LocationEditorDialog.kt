@@ -12,13 +12,13 @@ import cafe.adriel.greenhell.SaveLocationEvent
 import cafe.adriel.greenhell.classTag
 import cafe.adriel.greenhell.model.Location
 import cafe.adriel.greenhell.model.LocationCategory
+import cafe.adriel.greenhell.postEvent
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.tinsuke.icekick.extension.freezeInstanceState
 import com.tinsuke.icekick.extension.parcelState
 import com.tinsuke.icekick.extension.unfreezeInstanceState
 import kotlinx.android.synthetic.main.dialog_location_editor.*
 import kotlinx.android.synthetic.main.dialog_location_editor.view.*
-import org.greenrobot.eventbus.EventBus
 
 class LocationEditorDialog : BottomSheetDialogFragment() {
 
@@ -88,7 +88,7 @@ class LocationEditorDialog : BottomSheetDialogFragment() {
                 this.category = LocationCategory.MY_LOCATIONS
             } ?: Location(name, westPosition, southPosition, LocationCategory.MY_LOCATIONS)
 
-        EventBus.getDefault().post(SaveLocationEvent(newLocation))
+        postEvent(SaveLocationEvent(newLocation))
         dismiss()
     }
 
