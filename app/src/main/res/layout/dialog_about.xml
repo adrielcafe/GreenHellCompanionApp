@@ -55,7 +55,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/adriel_cafe"
                 android:textStyle="bold"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:textColor="@color/colorPrimaryDark"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"

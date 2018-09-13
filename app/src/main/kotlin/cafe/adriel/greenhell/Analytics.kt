@@ -74,7 +74,7 @@ object Analytics {
         val params = Bundle().apply {
             putString(PARAM_URL, url)
         }
-        analytics?.logEvent(EVENT_SHARE_CRAFT_ITEM, params)
+        analytics?.logEvent(EVENT_OPEN_URL, params)
     }
 
     fun logDonate(sku: String){

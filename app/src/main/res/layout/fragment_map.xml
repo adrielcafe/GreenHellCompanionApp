@@ -46,7 +46,7 @@
             android:textSize="10sp"
             android:textStyle="italic"
             android:textColor="@android:color/white"
-            android:textColorLink="@color/colorAccent"/>
+            android:textColorLink="@android:color/white"/>
 
     </androidx.cardview.widget.CardView>
 

@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import cafe.adriel.greenhell.BuildConfig
 import cafe.adriel.greenhell.RemoteConfig
+import com.crashlytics.android.Crashlytics
 import com.github.stephenvinouze.core.managers.KinAppManager
 import com.github.stephenvinouze.core.models.KinAppProductType
 import com.github.stephenvinouze.core.models.KinAppPurchase
@@ -35,10 +36,16 @@ class MainViewModel(app: Application) : AndroidViewModel(app), KinAppManager.Kin
     }
 
     override fun onBillingReady() {
-        billingSupported.value = billingManager.isBillingSupported(KinAppProductType.INAPP)
         launch(UI) {
-            billingManager.restorePurchases(KinAppProductType.INAPP)?.forEach {
-                billingManager.consumePurchase(it)
+            try {
+                billingSupported.value = billingManager.isBillingSupported(KinAppProductType.INAPP)
+                billingManager.restorePurchases(KinAppProductType.INAPP)?.forEach {
+                    billingManager.consumePurchase(it)
+                }
+            } catch (e: Exception){
+                Crashlytics.logException(e)
+                e.printStackTrace()
+                billingSupported.value = false
             }
         }
     }

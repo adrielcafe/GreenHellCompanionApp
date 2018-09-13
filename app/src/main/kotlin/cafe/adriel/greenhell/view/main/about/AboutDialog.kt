@@ -5,8 +5,10 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatDialog
 import cafe.adriel.greenhell.*
+import com.crashlytics.android.Crashlytics
 import kotlinx.android.synthetic.main.dialog_about.*
 
 class AboutDialog private constructor(context: Context) : AppCompatDialog(context) {
@@ -49,11 +51,18 @@ class AboutDialog private constructor(context: Context) : AppCompatDialog(contex
     }
 
     private fun sendEmail(){
-        val email = Uri.parse("mailto:${App.EMAIL}")
-        val subject = "${context.getString(R.string.app_name)} for Android | v${BuildConfig.VERSION_NAME} (Build ${BuildConfig.VERSION_CODE}), SDK ${Build.VERSION.SDK_INT}"
-        Intent(Intent.ACTION_SENDTO, email).run {
-            putExtra(Intent.EXTRA_SUBJECT, subject)
-            context.startActivity(this)
+        try {
+            val email = Uri.parse("mailto:${App.EMAIL}")
+            val subject =
+                "${context.getString(R.string.app_name)} for Android | v${BuildConfig.VERSION_NAME} (Build ${BuildConfig.VERSION_CODE}), SDK ${Build.VERSION.SDK_INT}"
+            Intent(Intent.ACTION_SENDTO, email).run {
+                putExtra(Intent.EXTRA_SUBJECT, subject)
+                context.startActivity(this)
+            }
+        } catch (e: Exception){
+            Crashlytics.logException(e)
+            e.printStackTrace()
+            Toast.makeText(context, "Oops! No Email app found :/", Toast.LENGTH_LONG).show()
         }
     }
 

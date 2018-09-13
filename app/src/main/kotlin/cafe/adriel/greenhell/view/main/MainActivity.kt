@@ -38,8 +38,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(vToolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        RateThisApp.onCreate(this)
-        RateThisApp.showRateDialogIfNeeded(this)
+        if(BuildConfig.RELEASE) {
+            RateThisApp.onCreate(this)
+            RateThisApp.showRateDialogIfNeeded(this)
+        }
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
