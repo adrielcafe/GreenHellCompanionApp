@@ -47,5 +47,6 @@
     <string name="thanks_for_support">Thank you for your support! ☕ 😋</string>
     <string name="later">Later</string>
     <string name="donate">Donate</string>
+    <string name="something_went_wrong">Oops! Something went wrong</string>
 
 </resources>

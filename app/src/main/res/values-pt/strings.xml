@@ -42,5 +42,6 @@
     <string name="thanks_for_support">Obrigado pelo seu apoio! ☕ 😋</string>
     <string name="later">Depois</string>
     <string name="donate">Doar</string>
+    <string name="something_went_wrong">Oops! Algo deu errado</string>
 
 </resources>

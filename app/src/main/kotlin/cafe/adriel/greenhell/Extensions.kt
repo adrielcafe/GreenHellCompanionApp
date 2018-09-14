@@ -10,12 +10,14 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.RawRes
 import androidx.core.app.ShareCompat
 import androidx.core.content.getSystemService
 import androidx.core.content.res.ResourcesCompat
+import com.crashlytics.android.Crashlytics
 import okio.BufferedSource
 import okio.Okio
 import org.greenrobot.eventbus.EventBus
@@ -47,7 +49,13 @@ fun String.normalize() =
         .toLowerCase()
 
 fun Uri.open(context: Context) =
-    context.startActivity(Intent(Intent.ACTION_VIEW).apply { data = this@open })
+    try {
+        context.startActivity(Intent(Intent.ACTION_VIEW, this))
+    } catch (e: Exception){
+        Crashlytics.logException(e)
+        e.printStackTrace()
+        Toast.makeText(context, R.string.something_went_wrong, Toast.LENGTH_SHORT).show()
+    }
 
 fun View.inflater() = context.getSystemService<LayoutInflater>()!!
 
