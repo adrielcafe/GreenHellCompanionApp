@@ -3,9 +3,9 @@ package cafe.adriel.greenhell.view.main
 import android.app.Activity
 import android.app.Application
 import android.content.Intent
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import cafe.adriel.androidcoroutinescopes.viewmodel.CoroutineScopedAndroidViewModel
 import cafe.adriel.greenhell.BuildConfig
 import cafe.adriel.greenhell.RemoteConfig
 import com.crashlytics.android.Crashlytics
@@ -13,10 +13,9 @@ import com.github.stephenvinouze.core.managers.KinAppManager
 import com.github.stephenvinouze.core.models.KinAppProductType
 import com.github.stephenvinouze.core.models.KinAppPurchase
 import com.github.stephenvinouze.core.models.KinAppPurchaseResult
-import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
 
-class MainViewModel(app: Application) : AndroidViewModel(app), KinAppManager.KinAppListener {
+class MainViewModel(app: Application) : CoroutineScopedAndroidViewModel(app), KinAppManager.KinAppListener {
 
     private val appUpdateAvailable = MutableLiveData<Boolean>()
     private val purchaseCompleted = MutableLiveData<Boolean>()
@@ -36,7 +35,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app), KinAppManager.Kin
     }
 
     override fun onBillingReady() {
-        launch(UI) {
+        launch {
             try {
                 billingSupported.value = billingManager.isBillingSupported(KinAppProductType.INAPP)
                 billingManager.restorePurchases(KinAppProductType.INAPP)?.forEach {
@@ -52,7 +51,7 @@ class MainViewModel(app: Application) : AndroidViewModel(app), KinAppManager.Kin
 
     override fun onPurchaseFinished(purchaseResult: KinAppPurchaseResult, purchase: KinAppPurchase?) {
         if(purchaseResult == KinAppPurchaseResult.SUCCESS && purchase != null){
-            launch(UI) {
+            launch {
                 billingManager.consumePurchase(purchase)
                 purchaseCompleted.value = true
             }

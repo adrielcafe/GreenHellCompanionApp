@@ -9,9 +9,6 @@ import com.mikepenz.fastadapter.items.AbstractItem
 import com.mikepenz.fastadapter_extensions.drag.IDraggable
 import com.shawnlin.numberpicker.NumberPicker
 import kotlinx.android.synthetic.main.item_location.view.*
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.delay
-import kotlinx.coroutines.experimental.launch
 
 class LocationAdapterItem(val location: Location) :
     AbstractItem<LocationAdapterItem, LocationAdapterItem.ViewHolder>(),
@@ -62,11 +59,9 @@ class LocationAdapterItem(val location: Location) :
     }
 
     fun closeSwipeMenu(view: View){
-        launch(UI) {
-            // Short delay for smooth animation
-            delay(200)
+        view.vSwipeMenu.postDelayed({
             view.vSwipeMenu.smoothCloseMenu()
-        }
+        }, 200) // Short delay for smooth animation
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view)

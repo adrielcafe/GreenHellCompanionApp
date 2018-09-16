@@ -6,11 +6,11 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.Observer
+import cafe.adriel.androidcoroutinescopes.appcompat.CoroutineScopedActivity
 import cafe.adriel.greenhell.*
 import cafe.adriel.greenhell.view.main.about.AboutDialog
 import cafe.adriel.greenhell.view.main.crafting.CraftingFragment
@@ -21,14 +21,13 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.kobakei.ratethisapp.RateThisApp
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.delay
 import kotlinx.coroutines.experimental.launch
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : CoroutineScopedActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val viewModel by viewModel<MainViewModel>()
 
@@ -107,11 +106,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     // Drawer Nav listener
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.nav_about -> launch(UI) {
+            R.id.nav_about -> launch {
                 delay(300)
                 AboutDialog.show(this@MainActivity)
             }
-            R.id.nav_donate -> launch(UI) {
+            R.id.nav_donate -> launch {
                 delay(300)
                 DonateDialog.show(this@MainActivity)
             }
