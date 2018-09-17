@@ -24,7 +24,8 @@ class MainViewModel(app: Application) : CoroutineScopedAndroidViewModel(app), Ki
 
     init {
         billingManager.bind(this)
-        RemoteConfig.load {
+        launch {
+            RemoteConfig.load()
             appUpdateAvailable.value = BuildConfig.VERSION_CODE < RemoteConfig.getMinVersion()
         }
     }

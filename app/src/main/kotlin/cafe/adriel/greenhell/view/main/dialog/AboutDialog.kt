@@ -1,4 +1,4 @@
-package cafe.adriel.greenhell.view.main.about
+package cafe.adriel.greenhell.view.main.dialog
 
 import android.content.Context
 import android.content.Intent

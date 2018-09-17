@@ -1,4 +1,4 @@
-package cafe.adriel.greenhell.view.main.donate
+package cafe.adriel.greenhell.view.main.dialog
 
 import android.content.Context
 import androidx.appcompat.app.AlertDialog

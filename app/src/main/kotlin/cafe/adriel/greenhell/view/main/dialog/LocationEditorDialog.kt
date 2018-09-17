@@ -1,4 +1,4 @@
-package cafe.adriel.greenhell.view.main.locations
+package cafe.adriel.greenhell.view.main.dialog
 
 import android.os.Bundle
 import android.text.Editable

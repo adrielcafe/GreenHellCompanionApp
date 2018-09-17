@@ -12,9 +12,9 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.Observer
 import cafe.adriel.androidcoroutinescopes.appcompat.CoroutineScopedActivity
 import cafe.adriel.greenhell.*
-import cafe.adriel.greenhell.view.main.about.AboutDialog
+import cafe.adriel.greenhell.view.main.dialog.AboutDialog
 import cafe.adriel.greenhell.view.main.crafting.CraftingFragment
-import cafe.adriel.greenhell.view.main.donate.DonateDialog
+import cafe.adriel.greenhell.view.main.dialog.DonateDialog
 import cafe.adriel.greenhell.view.main.locations.LocationsFragment
 import cafe.adriel.greenhell.view.main.map.MapFragment
 import com.google.android.material.navigation.NavigationView

@@ -67,11 +67,8 @@ dependencies {
     // Firebase
     implementation "com.google.firebase:firebase-core:16.0.3"
     implementation "com.google.firebase:firebase-config:16.0.0"
-    implementation "com.google.firebase:firebase-perf:16.1.0"
-    implementation "com.crashlytics.sdk.android:crashlytics:2.9.5"
-
-    // DI
-    implementation "org.koin:koin-androidx-viewmodel:1.0.0"
+    implementation "com.google.firebase:firebase-perf:16.0.0"
+    implementation "com.crashlytics.sdk.android:crashlytics:2.9.3"
 
     // Data
     implementation "io.paperdb:paperdb:2.6"
@@ -91,6 +88,7 @@ dependencies {
     implementation "com.github.lawloretienne:discreteslider:0.0.9"
 
     // Util
+    implementation "org.koin:koin-androidx-viewmodel:1.0.0"
     implementation "com.github.ajalt:timberkt:1.5.1"
     implementation "com.github.tinsukE:icekick:0.4"
     implementation "org.greenrobot:eventbus:3.1.1"

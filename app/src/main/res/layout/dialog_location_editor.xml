@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     android:orientation="vertical"
-    tools:context="cafe.adriel.greenhell.view.main.locations.LocationEditorDialog">
+    tools:context="cafe.adriel.greenhell.view.main.dialog.LocationEditorDialog">
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/vClose"
