@@ -48,5 +48,6 @@
     <string name="later">Later</string>
     <string name="donate">Donate</string>
     <string name="something_went_wrong">Oops! Something went wrong</string>
+    <string name="app_content_free">This app and all its content are free.\nIf you\'re enjoying and want to support the development, feel free to buy me a ☕.</string>
 
 </resources>

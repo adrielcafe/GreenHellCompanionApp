@@ -1,6 +1,9 @@
 # Green Hell
 -keepclasseswithmembers class cafe.adriel.greenhell.model.** { *; }
 
+# Billing
+-keep class com.android.vending.billing.**
+
 # Kotlin
 -dontwarn kotlin.**
 -dontwarn org.jetbrains.annotations.**
