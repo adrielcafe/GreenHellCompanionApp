@@ -4,7 +4,7 @@ buildscript {
     ext.androidXVersion = '1.0.0'
     ext.lifecycleVersion = '2.0.0'
     ext.ktxVersion = '1.0.0'
-    ext.moshiVersion = '1.7.0'
+    ext.moshiVersion = '1.6.0'
     ext.fastAdapterVersion = '3.3.1'
 
     repositories {
