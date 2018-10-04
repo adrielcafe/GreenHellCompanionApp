@@ -3,7 +3,6 @@ apply plugin: 'com.google.firebase.firebase-perf'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'io.fabric'
-apply plugin: 'io.mironov.smuggler'
 apply plugin: 'com.github.ben-manes.versions'
 
 android {
@@ -12,8 +11,8 @@ android {
         applicationId 'cafe.adriel.greenhell'
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 15
-        versionName '1.4.3'
+        versionCode 16
+        versionName '1.4.4'
         resConfigs 'en', 'pt'
     }
     buildTypes {
@@ -40,10 +39,12 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     dexOptions {
-        javaMaxHeapSize '8g'
+        preDexLibraries true
+        maxProcessCount 8
     }
-    lintOptions {
-        disable 'ParcelCreator'
+    androidExtensions {
+        experimental = true
+        defaultCacheImplementation = "SPARSE_ARRAY"
     }
 }
 
@@ -52,9 +53,7 @@ dependencies {
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.26.0"
-    implementation 'com.github.adrielcafe.AndroidCoroutineScopes:appcompat:1.0.0'
-    implementation 'com.github.adrielcafe.AndroidCoroutineScopes:viewmodel:1.0.0'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:0.30.0"
 
     // Android
     implementation "com.google.android.material:material:$materialVersion"
@@ -70,7 +69,7 @@ dependencies {
     implementation "com.google.firebase:firebase-analytics:16.0.3"
     implementation "com.google.firebase:firebase-config:16.0.0"
     implementation "com.google.firebase:firebase-perf:16.0.0"
-    implementation "com.crashlytics.sdk.android:crashlytics:2.9.3"
+    implementation "com.crashlytics.sdk.android:crashlytics:2.9.5"
 
     // Data
     implementation "io.paperdb:paperdb:2.6"
@@ -90,11 +89,13 @@ dependencies {
     implementation "com.github.lawloretienne:discreteslider:0.0.9"
 
     // Util
-    implementation "org.koin:koin-androidx-viewmodel:1.0.0"
+    implementation "org.koin:koin-androidx-viewmodel:1.0.1"
     implementation "com.github.ajalt:timberkt:1.5.1"
     implementation "com.github.tinsukE:icekick:0.4"
     implementation "org.greenrobot:eventbus:3.1.1"
-    implementation "com.github.StephenVinouze:KinApp:1.0.2"
+    implementation "com.github.adrielcafe:KinApp:4d6a9e8afa"
+    implementation 'com.github.adrielcafe.AndroidCoroutineScopes:appcompat:1.0.0'
+    implementation 'com.github.adrielcafe.AndroidCoroutineScopes:viewmodel:1.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

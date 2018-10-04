@@ -1,11 +1,11 @@
 buildscript {
-    ext.kotlinVersion = '1.2.70'
-    ext.materialVersion = '1.0.0-rc02'
-    ext.androidXVersion = '1.0.0-rc02'
-    ext.lifecycleVersion = '2.0.0-rc01'
-    ext.ktxVersion = '1.0.0-rc02'
-    ext.moshiVersion = '1.6.0'
-    ext.fastAdapterVersion = '3.3.0-rc02'
+    ext.kotlinVersion = '1.2.71'
+    ext.materialVersion = '1.0.0'
+    ext.androidXVersion = '1.0.0'
+    ext.lifecycleVersion = '2.0.0'
+    ext.ktxVersion = '1.0.0'
+    ext.moshiVersion = '1.7.0'
+    ext.fastAdapterVersion = '3.3.1'
 
     repositories {
         google()
@@ -14,12 +14,11 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.0-alpha11'
+        classpath 'com.android.tools.build:gradle:3.3.0-alpha13'
         classpath "com.google.gms:google-services:4.0.1"
         classpath 'com.google.firebase:firebase-plugins:1.1.5'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        classpath "io.fabric.tools:gradle:1.25.4"
-        classpath "io.mironov.smuggler:smuggler-plugin:0.14.0"
+        classpath "io.fabric.tools:gradle:1.26.0"
         classpath "com.github.ben-manes:gradle-versions-plugin:0.20.0"
     }
 }

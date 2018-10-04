@@ -1,9 +1,12 @@
 package cafe.adriel.greenhell.model
 
+import android.os.Parcelable
 import androidx.annotation.StringRes
 import cafe.adriel.greenhell.R
+import kotlinx.android.parcel.Parcelize
 
-enum class LocationCategory(@StringRes val nameResId: Int) {
+@Parcelize
+enum class LocationCategory(@StringRes val nameResId: Int) : Parcelable {
 
     MY_LOCATIONS(R.string.my_locations),
     BLUEPRINT(R.string.blueprints),

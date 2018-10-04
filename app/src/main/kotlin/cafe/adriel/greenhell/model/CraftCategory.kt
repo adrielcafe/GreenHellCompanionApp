@@ -1,9 +1,12 @@
 package cafe.adriel.greenhell.model
 
+import android.os.Parcelable
 import androidx.annotation.StringRes
 import cafe.adriel.greenhell.R
+import kotlinx.android.parcel.Parcelize
 
-enum class CraftCategory(@StringRes val nameResId: Int) {
+@Parcelize
+enum class CraftCategory(@StringRes val nameResId: Int) : Parcelable {
 
     CAMPSITE(R.string.campsite),
     FOOD(R.string.food),

@@ -1,8 +1,10 @@
 package cafe.adriel.greenhell.model
 
-import io.mironov.smuggler.AutoParcelable
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class CraftItem(
     val name: String,
     val description: String,
-    val category: CraftCategory) : AutoParcelable
+    val category: CraftCategory) : Parcelable

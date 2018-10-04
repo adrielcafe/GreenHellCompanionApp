@@ -74,7 +74,13 @@ class MainViewModel(app: Application) : CoroutineScopedAndroidViewModel(app), Ki
     fun getBillingSupported(): LiveData<Boolean> = billingSupported
 
     fun verifyDonation(requestCode: Int, resultCode: Int, data: Intent?) =
-        billingManager.verifyPurchase(requestCode, resultCode, data)
+        try {
+            billingManager.verifyPurchase(requestCode, resultCode, data)
+        } catch (e: Exception) {
+            Crashlytics.logException(e)
+            e.printStackTrace()
+            false
+        }
 
     fun donate(activity: Activity, sku: String) {
         if(BuildConfig.RELEASE) {
