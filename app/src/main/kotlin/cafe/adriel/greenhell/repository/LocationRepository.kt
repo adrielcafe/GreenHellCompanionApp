@@ -7,6 +7,7 @@ import cafe.adriel.greenhell.model.Location
 import cafe.adriel.greenhell.model.LocationCategory
 import cafe.adriel.greenhell.normalize
 import cafe.adriel.greenhell.raw
+import com.crashlytics.android.Crashlytics
 import io.paperdb.Paper
 import kotlinx.coroutines.experimental.IO
 import kotlinx.coroutines.experimental.withContext
@@ -36,7 +37,13 @@ class LocationRepository(private val appContext: Context) {
 
     suspend fun saveLocation(location: Location) {
         withContext(IO){
-            dbUserLocations.write(location.id, location)
+            try {
+                dbUserLocations.write(location.id, location)
+            } catch (e: IllegalArgumentException){
+                val errorMessage = "Location ID: ${location.id}, Error: ${e.message}"
+                Crashlytics.logException(IllegalArgumentException(errorMessage))
+                e.printStackTrace()
+            }
         }
     }
 
