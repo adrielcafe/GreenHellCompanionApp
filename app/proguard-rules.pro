@@ -11,6 +11,7 @@
 -keepattributes Signature
 -keepattributes Annotation
 -keep public class kotlin.reflect.jvm.internal.impl.builtins.* { public *; }
+-keep public class kotlin.reflect.jvm.internal.impl.serialization.deserialization.builtins.* { public *; }
 -keepclassmembernames class kotlinx.** {
     volatile <fields>;
 }
